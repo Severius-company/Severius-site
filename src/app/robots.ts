@@ -1,4 +1,10 @@
 import type { MetadataRoute } from 'next'
-import { siteOrigin } from '@/lib/site'
+import { hasApprovedOrigin, siteOrigin } from '@/lib/site'
 
-export default function robots(): MetadataRoute.Robots { return { rules: { userAgent:'*', disallow:'/' }, sitemap:`${siteOrigin}/sitemap.xml` } }
+/** Prévia privada até existir domínio aprovado (NEXT_PUBLIC_SITE_ORIGIN). */
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: hasApprovedOrigin ? { userAgent: '*', allow: '/' } : { userAgent: '*', disallow: '/' },
+    sitemap: `${siteOrigin}/sitemap.xml`,
+  }
+}

@@ -1,57 +1,34 @@
-'use client'
-
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
-import type { Locale } from '@/lib/site'
-import type { SiteCopy } from '@/lib/copy'
+import { LinkButton } from '@/components/Button'
+import { HeaderNav } from '@/components/HeaderNav'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { LogoMark } from '@/components/Logo'
+import { MobileMenu } from '@/components/MobileMenu'
+import { getNavRoutes } from '@/content'
+import type { Dictionary } from '@/content/types'
+import { localePath, type Locale } from '@/lib/i18n'
 
-export function Header({ locale, text }: { locale: Locale; text: SiteCopy }) {
-  const [open, setOpen] = useState(false)
-  const [solid, setSolid] = useState(false)
-  const panel = useRef<HTMLDivElement>(null)
-  const trigger = useRef<HTMLButtonElement>(null)
-
-  useEffect(() => { document.documentElement.lang = text.lang }, [text.lang])
-
-  useEffect(() => {
-    const update = () => setSolid(window.scrollY > 24)
-    update(); window.addEventListener('scroll', update, { passive: true })
-    return () => window.removeEventListener('scroll', update)
-  }, [])
-
-  useEffect(() => {
-    if (!open) return
-    panel.current?.querySelector<HTMLElement>('a,button')?.focus()
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') { setOpen(false); trigger.current?.focus() }
-      if (event.key !== 'Tab' || !panel.current) return
-      const items = [...panel.current.querySelectorAll<HTMLElement>('a,button')]
-      const first = items[0]
-      const last = items.at(-1)
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus() }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus() }
-    }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
-  }, [open])
-
-  const links = [[text.nav.work,'#como-ajudamos'],[text.nav.capabilities,'#capacidades'],[text.nav.process,'#processo'],[text.nav.insights,'#insights']] as const
-  const close = () => setOpen(false)
-  return <header className="site-header" data-solid={solid}>
-    <div className="header-inner">
-      <Link href={`/${locale}`} className="wordmark" aria-label={`Severius — ${text.nav.work}`}>Severius<i aria-hidden="true" /></Link>
-      <nav className="desktop-nav" aria-label={text.nav.work}>
-        {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
-      </nav>
-      <div className="header-actions">
-        <Link className="language" href={`/${text.otherLocale}`} hrefLang={text.otherLocale} aria-label={text.nav.language}>{text.localeName}</Link>
-        <a className="button button-small desktop-cta" href="#diagnostico">{text.nav.cta}</a>
-        <button ref={trigger} className="menu-trigger" type="button" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>{open ? text.nav.close : text.nav.open}</button>
+export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+  const t = dict.nav
+  const items = getNavRoutes().map(r => ({ ...r, label: t.links[r.key] }))
+  return (
+    <header className="sticky top-0 z-20">
+      {/* blur numa camada própria: backdrop-filter no <header> viraria containing block do menu fixed */}
+      <div aria-hidden="true" className="glass-bar absolute inset-0 -z-10 bg-navbar" />
+      <div className="mx-auto flex max-w-[1280px] min-[1800px]:max-w-[1600px] items-center justify-between gap-5 px-[clamp(20px,4vw,48px)] py-3.5">
+        <Link href={localePath(locale, '/')} aria-label={t.homeAria} className="flex flex-none items-center gap-2.5">
+          <LogoMark size={36} />
+          <span className="text-xl font-semibold tracking-[-0.01em]">Severius</span>
+        </Link>
+        <nav aria-label={t.mainAria} className="hidden min-w-0 flex-1 lg:flex">
+          <HeaderNav locale={locale} items={items} />
+        </nav>
+        <div className="hidden flex-none items-center gap-3 lg:flex">
+          <LanguageSwitcher locale={locale} labels={t.languages} groupLabel={t.languageAria} />
+          <LinkButton href={localePath(locale, '/contact')} className="h-11 px-5">{t.contact}</LinkButton>
+        </div>
+        <MobileMenu locale={locale} items={items} t={t} />
       </div>
-    </div>
-    {open && <div className="mobile-menu" id="mobile-menu" ref={panel} aria-label={text.nav.work}>
-      <button className="menu-close" type="button" onClick={() => { close(); trigger.current?.focus() }}>{text.nav.close}</button>
-      <nav>{links.map(([label, href]) => <a onClick={close} key={href} href={href}>{label}</a>)}<a onClick={close} href="#diagnostico">{text.nav.cta}</a></nav>
-    </div>}
-  </header>
+    </header>
+  )
 }

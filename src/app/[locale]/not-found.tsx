@@ -1,15 +1,24 @@
-'use client'
+import { LinkButton } from '@/components/Button'
+import { getDictionary } from '@/content'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { localeFromPath } from '@/lib/site'
-
-const text = {
-  'pt-br': { title: 'Esta página não foi encontrada.', home: 'Voltar ao início' },
-  en: { title: 'This page could not be found.', home: 'Back to the homepage' },
-} as const
-
+/**
+ * not-found não recebe params: renderiza os dois idiomas e o CSS mostra só o do <html lang>
+ * (definido pelo layout do locale). Sem JS e sem script inline.
+ */
 export default function NotFound() {
-  const locale = localeFromPath(usePathname())
-  return <main className="state-page"><p className="wordmark">Severius</p><h1>{text[locale].title}</h1><Link className="button" href={`/${locale}`}>{text[locale].home}</Link></main>
+  const versions = [
+    { cls: 'i18n-en', href: '/', t: getDictionary('en').notFound },
+    { cls: 'i18n-pt', href: '/pt-br', t: getDictionary('pt-br').notFound },
+  ]
+  return (
+    <section className="border-b border-line bg-hero">
+      {versions.map(v => (
+        <div key={v.cls} className={`${v.cls} mx-auto flex max-w-[1280px] flex-col items-center gap-[18px] px-[clamp(20px,4vw,48px)] py-[clamp(64px,10vw,140px)] text-center`}>
+          <h1 className="m-0 text-[length:clamp(40px,5vw,68px)] leading-[1.06] font-semibold">{v.t.title}</h1>
+          <p className="m-0 text-lg text-hero-muted">{v.t.body}</p>
+          <LinkButton href={v.href} className="h-14 px-7 text-base">{v.t.back}</LinkButton>
+        </div>
+      ))}
+    </section>
+  )
 }

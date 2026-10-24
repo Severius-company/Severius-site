@@ -1,14 +1,15 @@
-import createMDX from '@next/mdx'
-
 const isDev = process.env.NODE_ENV === 'development'
+
+// Tudo é servido pela própria origem: fontes locais (next/font/local), CSS do Tailwind e JS do Next.
+// 'unsafe-inline' em script-src é exigido pelos scripts de hidratação (RSC payload) que o próprio
+// Next injeta em páginas estáticas; o código do site não usa script inline.
 const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data:",
   "font-src 'self'",
-  "connect-src 'self'",
-  "worker-src 'self' blob:",
+  `connect-src 'self'${isDev ? ' ws: wss:' : ''}`,
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -17,8 +18,6 @@ const csp = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
-  experimental: { mdxRs: true },
   poweredByHeader: false,
   async headers() {
     return [{
@@ -36,4 +35,4 @@ const nextConfig = {
   },
 }
 
-export default createMDX({})(nextConfig)
+export default nextConfig
