@@ -1,88 +1,56 @@
-# Severius Website
+# Severius — site institucional
 
-Site institucional bilíngue (PT-BR fonte editorial · inglês adaptado) da Severius — consultoria de tecnologia e
-estúdio de software AI-native. **Primeira fatia funcional: prévia privada local. Nada foi publicado.**
+Site da Severius (estúdio de produtos digitais), tema escuro "Studio Dark".
 
-Direção visual aprovada: **Campo de Conexões** (charcoal, tecnológico, editorial) com a assinatura
-**Severius Signal**. Fontes de verdade: `Severius-company/docs/*` (visão, catálogo, segurança, conceito e prompt do site).
+## Stack
 
-## Executar
+- Next.js 16 (App Router, Turbopack), React 19, TypeScript
+- Tailwind CSS v4 (`@tailwindcss/postcss`; tokens em `@theme` no `src/app/globals.css`)
+- Fonte Barlow local (`next/font/local`, `src/app/fonts/`). Sem CDN, sem requisições a terceiros
+- Testes: Vitest (lógica pura e dicionários) e Playwright (e2e contra `next build` + `next start`)
+
+## Rotas e idiomas
+
+| Inglês (UK), sem prefixo | Português (Brasil) |
+| --- | --- |
+| `/` | `/pt-br` |
+| `/services` (`?tab=design\|engineering\|project-management`) | `/pt-br/services` |
+| `/work`, `/work/[slug]` | `/pt-br/work`, `/pt-br/work/[slug]` |
+| `/process`, `/about`, `/contact` | `/pt-br/process`, `/pt-br/about`, `/pt-br/contact` |
+
+- As páginas ficam em `src/app/[locale]/` (`en` | `pt-br`). O `src/proxy.ts` reescreve internamente as URLs
+  sem prefixo para `/en/...` e redireciona `/en/...` (308) para a URL sem prefixo. Não há cookie nem
+  redirecionamento por `Accept-Language`.
+- Os textos ficam em dicionários tipados: `src/content/en`, `src/content/pt-br` e `src/content/types.ts`.
+  Dados que não se traduzem (clientes, URLs, contato, ícones) ficam em `src/content/shared.ts`. Use
+  `getDictionary(locale)` para obter os textos.
+- Cada página define `<html lang>` (`en-GB` / `pt-BR`), title/description, canonical e hreflang. O
+  `sitemap.xml` inclui as duas versões. O seletor de idioma com bandeiras fica no header e no menu mobile.
+
+## Careers (standby)
+
+`careersEnabled` em `src/lib/site.ts` (hoje `false`): `/careers` e `/pt-br/careers` respondem 404, e o
+link some de header, footer, menu mobile e sitemap. O código e o conteúdo continuam no projeto; para
+reativar, troque a flag para `true`.
+
+## Comandos
 
 ```bash
 npm install
-npm run dev            # http://localhost:3000  (/ redireciona para /pt-br)
+npm run dev          # http://localhost:3000 (ou PORT=3001 npm run dev)
+npm run lint
+npm run typecheck
+npm test             # vitest
+npx playwright test  # e2e: faz build e sobe next start na porta 3117
 npm run build && npm start
 ```
 
-## Verificar (reprodutível)
+Pare o `next dev` antes de rodar `next build`: os dois compartilham a pasta `.next`.
 
-| Gate | Comando |
-| --- | --- |
-| Tipos | `npm run typecheck` |
-| Lint | `npm run lint` |
-| Unidade/contrato | `npm test` |
-| Build de produção | `npm run build` |
-| E2E, a11y, SEO, headers, performance | `npm run test:e2e` |
+## Deploy (Vercel)
 
-Evidências em `evidence/` e critérios de aceite/matriz em `work/qa-evidence-plan.md`. Revisão AppSec em `work/appsec-review.md`.
-
-## Stack e justificativa (arquitetura mínima)
-
-| Dependência | Por quê | Onde |
-| --- | --- | --- |
-| Next.js 16 (App Router) + React 19 + TypeScript 6 | rotas `/pt-br` e `/en` estáticas (SSG), metadata/sitemap/robots nativos | todo o app |
-| `three` + `@react-three/fiber` | cena 3D do Signal (modo completo) | só `SignalFull`, `dynamic(ssr:false)` |
-| `gsap` (ScrollTrigger) | mapeia o scroll nativo do hero → fase do Signal, sem pinagem nem scroll-jacking | só quando o modo não é estático, import dinâmico |
-| `@next/mdx` + `@mdx-js/*` | insights em MDX local (sem CMS) | `src/content/**` |
-| `@fontsource-variable/recursive` | fonte local OFL-1.1 (sem Google Fonts em runtime) | layout |
-| Vitest + Testing Library | unidade/contrato | `src/**/*.test.ts` |
-| Playwright + axe-core | jornada, a11y, headers, performance | `e2e/` |
-
-**Sem backend, CMS, analytics, banco, cookies ou serviço externo.** O formulário valida no cliente e devolve
-“resumo preparado — nada foi enviado”; o usuário pode copiá-lo manualmente para a área de transferência (botão “Copiar resumo”, ver EXC-04).
-
-Compatibilidade fixada: TypeScript 6 e ESLint 9 (o `eslint-config-next` 16 ainda não suporta TS 7 / ESLint 10).
-
-## Movimento (v2)
-
-- **Hero pinado ("Signal Lock").** O palco fica preso por ~2,6 telas (1,8 no modo leve) enquanto a **rolagem nativa** conduz
-  uma linha do tempo GSAP (`scrub`): a rede parte dispersa (Sinais), ganha rotas, vira sistemas e fecha no “S” (Impacto);
-  o título sai de foco (blur), a frase “Do sinal ao sistema, pronto para evoluir.” entra no fim e o CTA nunca sai da tela.
-  Nada captura wheel/touch nem trava o `body`: teclado, leitores de tela e âncoras funcionam. O pin só existe quando o conteúdo
-  cabe na viewport (zoom, espaçamento de texto e paisagem curta rolam normalmente).
-- **Capacidades.** A espinha se desenha com a rolagem; cada grupo entra com linha de acento, marcador que “acende”, título com
-  foco e itens em cascata (uma vez por grupo). Impressão força tudo visível.
-- Com `prefers-reduced-motion` o GSAP **nem é carregado**: hero estático e capacidades sem animação.
-- Referência de estilo: hero “scroll-locked” do 21st.dev e o site weevolveit.com foram estudados só como inspiração de linguagem
-  (rolagem conduzindo a cena, título que desfoca, frase de fechamento). Nenhum código, vídeo, conteúdo, número ou depoimento foi
-  copiado; o componente de referência trava o `body` sem liberar, o que não atende à exigência de rolagem nativa/acessibilidade.
-
-## Severius Signal — modos
-
-| Modo | Quando | O que é |
-| --- | --- | --- |
-| Completo | desktop, WebGL, sem `prefers-reduced-motion`, sem `saveData` | canvas R3F em tela cheia, montado em idle; progresso via GSAP (96 sinais → “S”) |
-| Leve | viewport < 768px ou `saveData` | SVG original com rotas reveladas por fase (CSS) |
-| Estático | `prefers-reduced-motion`, sem WebGL/JS, falha de chunk/contexto (inclui contexto que não fica pronto em 6 s) | SVG original; a narrativa das 4 fases permanece em HTML |
-
-O HTML + SVG estático é sempre renderizado primeiro; o viewport tem dimensões reservadas (sem CLS).
-
-## Suposições explícitas
-
-1. Marca pública **Severius**; wordmark tipográfico provisório.
-2. Origem/domínio **não aprovados**: `NEXT_PUBLIC_SITE_ORIGIN` vazio → JSON-LD sem `url`; `robots` = `Disallow: /`;
-   canonical/sitemap usam a origem placeholder `https://example.invalid` apenas para a prévia.
-3. Sem clientes, estatísticas, depoimentos, prêmios, e-mail ou telefone. Demonstrações rotuladas **Severius Labs** (conceituais).
-4. Um insight publicado por idioma (MDX); os demais são “em preparação”.
-5. Localização: o diretório foi criado fora do workspace `Severius-company` para virar repositório próprio na organização
-   `Severius-company` do GitHub; **nenhum remoto configurado**.
-
-## Decisões humanas pendentes (antes de qualquer publicação)
-
-- Domínio e origem pública; e-mail/canal de recebimento e destino aprovado do formulário (o que implica backend, privacidade e retenção).
-- Logotipo definitivo (hoje wordmark tipográfico).
-- Casos reais autorizados para substituir/complementar Severius Labs.
-- Analytics/consentimento (não incluído por padrão).
-- Exceções pendentes em `work/exceptions.md`: CSP com `'unsafe-inline'` (EXC-01), JS inicial acima do orçamento (EXC-02), aviso upstream `THREE.Clock` (EXC-03) e botão “Copiar resumo” (EXC-04).
-- Aprovação de publicação e revisão de licença GSAP para uso comercial (ver `work/appsec-review.md`).
-- Revisão humana do copy em inglês.
+O projeto já está ligado à Vercel (`.vercel/`); o build padrão é `next build`. Defina
+`NEXT_PUBLIC_SITE_ORIGIN` (ex.: `https://severius.com`) só quando o domínio estiver aprovado. Enquanto
+estiver vazio, o robots bloqueia a indexação e o canonical/sitemap usam `https://example.invalid`.
+Os headers de segurança (CSP same-origin etc.) ficam no `next.config.mjs`.
+# Severius-site
