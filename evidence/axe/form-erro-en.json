@@ -1,0 +1,47 @@
+{
+  "name": "form-erro-en",
+  "url": "http://127.0.0.1:3107/en",
+  "axe": {
+    "name": "axe-core",
+    "version": "4.13.0"
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "passes": 29,
+  "incomplete": [
+    {
+      "id": "aria-prohibited-attr",
+      "nodes": [
+        ".signal"
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "nodes": [
+        "a[aria-label=\"Severius — Work\"]",
+        ".desktop-nav > a[href$=\"#como-ajudamos\"]",
+        ".desktop-nav > a[href$=\"#capacidades\"]",
+        ".desktop-nav > a[href$=\"#processo\"]",
+        ".desktop-nav > a[href$=\"#insights\"]",
+        ".language",
+        ".button-small",
+        ".signal-states > li:nth-child(1) > strong",
+        ".signal-states > li:nth-child(1) > span",
+        ".signal-states > li:nth-child(2) > strong",
+        ".signal-states > li:nth-child(2) > span",
+        ".signal-states > li:nth-child(3) > strong",
+        ".signal-states > li:nth-child(3) > span",
+        "li[data-active=\"true\"] > strong",
+        "li[data-active=\"true\"] > span",
+        ".text-link[href$=\"#processo\"]",
+        ".hero-payoff"
+      ]
+    }
+  ],
+  "violations": []
+}

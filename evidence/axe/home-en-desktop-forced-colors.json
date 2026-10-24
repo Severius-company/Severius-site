@@ -1,0 +1,25 @@
+{
+  "name": "home-en-desktop-forced-colors",
+  "url": "http://127.0.0.1:3107/en",
+  "axe": {
+    "name": "axe-core",
+    "version": "4.13.0"
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "passes": 28,
+  "incomplete": [
+    {
+      "id": "aria-prohibited-attr",
+      "nodes": [
+        ".signal"
+      ]
+    }
+  ],
+  "violations": []
+}

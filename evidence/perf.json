@@ -1,0 +1,1619 @@
+{
+  "generatedAt": "2026-10-01T00:31:53.243Z",
+  "disclaimer": "MEDIÇÃO SINTÉTICA LOCAL. NÃO É DADO DE CAMPO: não representa p75 de usuários reais e não autoriza afirmar Core Web Vitals de produção. Números dependem desta máquina e podem variar.",
+  "method": {
+    "server": "build de produção local (npm run build && next start -p 3107), servido em 127.0.0.1 (loopback, sem latência de rede; compressão gzip do next start)",
+    "browser": "Chromium do Playwright, headless, contexto novo por amostra (cache frio), sem throttle de rede; sem throttle de CPU exceto o perfil informativo mobile-cpu4x (CDP Emulation.setCPUThrottlingRate=4)",
+    "samplesPerProfileAndRoute": 3,
+    "lcp": "PerformanceObserver largest-contentful-paint (buffered); último candidato antes das interações",
+    "cls": "PerformanceObserver layout-shift (sem hadRecentInput), maior janela de sessão (gap 1s, máx 5s), incluindo rolagem completa da página",
+    "inp": "APROXIMAÇÃO: PerformanceObserver Event Timing (durationThreshold 16ms); maior duração entre interações (interactionId>0) disparadas sinteticamente por Playwright (teclado, clique em menu, digitação, validação do formulário). Não é o INP p75 de campo.",
+    "longTasks": "PerformanceObserver longtask; TBT-proxy = soma de (duração - 50ms)",
+    "bytes": "encodedBodySize do Resource Timing (corpo comprimido, sem cabeçalhos); chunks three/R3F e gsap identificados pelo conteúdo do script",
+    "requestsBeforeContent": "documento + recursos iniciados até o instante do LCP",
+    "budgetSource": "work/qa-evidence-plan.md §7"
+  },
+  "environment": {
+    "generatedAt": "2026-10-01T00:25:33.045Z",
+    "command": "npm run test:e2e",
+    "chromium": "153.0.8010.12",
+    "playwright": "1.63.0",
+    "axeCorePlaywright": "4.13.0",
+    "axeCore": "4.13.0",
+    "next": "16.3.5",
+    "react": "19.2.0",
+    "three": "0.186.0",
+    "gsap": "3.15.0",
+    "node": "v26.10.0",
+    "os": "Darwin 25.6.0 arm64",
+    "cpu": "Apple M4 Pro",
+    "cpuCount": 12,
+    "memoryGB": 26,
+    "contentHash": "4c3fb1bcf19427ad",
+    "siteOriginEnv": null,
+    "headless": true,
+    "networkThrottling": "none (loopback)",
+    "cpuThrottling": "none, exceto perfil mobile-cpu4x",
+    "hostLoad": [
+      2.28564453125,
+      3.34814453125,
+      4.10546875
+    ]
+  },
+  "budget": {
+    "lcpMs": 2500,
+    "inpMs": 200,
+    "cls": 0.1,
+    "htmlCssBytes": 102400,
+    "initialJsBytes": 133120,
+    "sceneChunkBytes": 358400,
+    "fallbackImageBytes": 122880,
+    "fontBytes": 163840,
+    "requestsBeforeContent": 20,
+    "longTaskMs": 200,
+    "thirdPartyBytes": 0
+  },
+  "results": [
+    {
+      "profile": "desktop-reduced-motion",
+      "profileLabel": "desktop 1440x900 + prefers-reduced-motion (modo static)",
+      "locale": "en",
+      "assertsAgainstBudget": true,
+      "runs": [
+        {
+          "mode": "static",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0,
+          "inpMs": 48,
+          "interactionsObserved": 6,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 3,
+          "domContentLoadedMs": 34,
+          "loadMs": 69,
+          "requestsTotal": 18,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 148478,
+            "jsInitialExcludingSceneAndGsap": 148478,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 0,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 0
+        },
+        {
+          "mode": "static",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0,
+          "inpMs": 48,
+          "interactionsObserved": 7,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 35,
+          "loadMs": 56,
+          "requestsTotal": 18,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 148478,
+            "jsInitialExcludingSceneAndGsap": 148478,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 0,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 0
+        },
+        {
+          "mode": "static",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0,
+          "inpMs": 48,
+          "interactionsObserved": 7,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 34,
+          "loadMs": 72,
+          "requestsTotal": 18,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 148478,
+            "jsInitialExcludingSceneAndGsap": 148478,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 0,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 0
+        }
+      ],
+      "budgets": [
+        {
+          "metric": "LCP",
+          "budget": 2500,
+          "unit": "ms",
+          "median": 76,
+          "worst": 76,
+          "pass": true
+        },
+        {
+          "metric": "INP (aprox., Event Timing)",
+          "budget": 200,
+          "unit": "ms",
+          "median": 48,
+          "worst": 48,
+          "pass": true
+        },
+        {
+          "metric": "CLS",
+          "budget": 0.1,
+          "unit": "",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "HTML + CSS comprimido",
+          "budget": 102400,
+          "unit": "bytes",
+          "median": 15849,
+          "worst": 15849,
+          "pass": true
+        },
+        {
+          "metric": "JS inicial comprimido (sem three/R3F e sem gsap)",
+          "budget": 133120,
+          "unit": "bytes",
+          "median": 148478,
+          "worst": 148478,
+          "pass": false
+        },
+        {
+          "metric": "Chunk da cena (three/R3F) comprimido",
+          "budget": 358400,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Imagem/arte fallback",
+          "budget": 122880,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Fontes no primeiro acesso",
+          "budget": 163840,
+          "unit": "bytes",
+          "median": 55860,
+          "worst": 55860,
+          "pass": true
+        },
+        {
+          "metric": "Requests antes do conteúdo útil (até o LCP)",
+          "budget": 20,
+          "unit": "requests",
+          "median": 14,
+          "worst": 14,
+          "pass": true
+        },
+        {
+          "metric": "Long task máxima",
+          "budget": 200,
+          "unit": "ms",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Terceiros",
+          "budget": 0,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "profile": "desktop-reduced-motion",
+      "profileLabel": "desktop 1440x900 + prefers-reduced-motion (modo static)",
+      "locale": "pt-br",
+      "assertsAgainstBudget": true,
+      "runs": [
+        {
+          "mode": "static",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0.0509,
+          "inpMs": 48,
+          "interactionsObserved": 7,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 34,
+          "loadMs": 56,
+          "requestsTotal": 18,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 148478,
+            "jsInitialExcludingSceneAndGsap": 148478,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 0,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 0
+        },
+        {
+          "mode": "static",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0.0509,
+          "inpMs": 48,
+          "interactionsObserved": 7,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 3,
+          "domContentLoadedMs": 34,
+          "loadMs": 71,
+          "requestsTotal": 18,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 148478,
+            "jsInitialExcludingSceneAndGsap": 148478,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 0,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 0
+        },
+        {
+          "mode": "static",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0.0509,
+          "inpMs": 48,
+          "interactionsObserved": 7,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 3,
+          "domContentLoadedMs": 34,
+          "loadMs": 56,
+          "requestsTotal": 18,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 148478,
+            "jsInitialExcludingSceneAndGsap": 148478,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 0,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 0
+        }
+      ],
+      "budgets": [
+        {
+          "metric": "LCP",
+          "budget": 2500,
+          "unit": "ms",
+          "median": 76,
+          "worst": 76,
+          "pass": true
+        },
+        {
+          "metric": "INP (aprox., Event Timing)",
+          "budget": 200,
+          "unit": "ms",
+          "median": 48,
+          "worst": 48,
+          "pass": true
+        },
+        {
+          "metric": "CLS",
+          "budget": 0.1,
+          "unit": "",
+          "median": 0.0509,
+          "worst": 0.0509,
+          "pass": true
+        },
+        {
+          "metric": "HTML + CSS comprimido",
+          "budget": 102400,
+          "unit": "bytes",
+          "median": 16134,
+          "worst": 16134,
+          "pass": true
+        },
+        {
+          "metric": "JS inicial comprimido (sem three/R3F e sem gsap)",
+          "budget": 133120,
+          "unit": "bytes",
+          "median": 148478,
+          "worst": 148478,
+          "pass": false
+        },
+        {
+          "metric": "Chunk da cena (three/R3F) comprimido",
+          "budget": 358400,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Imagem/arte fallback",
+          "budget": 122880,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Fontes no primeiro acesso",
+          "budget": 163840,
+          "unit": "bytes",
+          "median": 55860,
+          "worst": 55860,
+          "pass": true
+        },
+        {
+          "metric": "Requests antes do conteúdo útil (até o LCP)",
+          "budget": 20,
+          "unit": "requests",
+          "median": 14,
+          "worst": 14,
+          "pass": true
+        },
+        {
+          "metric": "Long task máxima",
+          "budget": 200,
+          "unit": "ms",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Terceiros",
+          "budget": 0,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "profile": "desktop",
+      "profileLabel": "desktop 1440x900 (modo full)",
+      "locale": "en",
+      "assertsAgainstBudget": true,
+      "runs": [
+        {
+          "mode": "full",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0,
+          "inpMs": 32,
+          "interactionsObserved": 8,
+          "longTasksMs": [
+            107,
+            53
+          ],
+          "maxLongTaskMs": 107,
+          "tbtProxyMs": 60,
+          "ttfbMs": 3,
+          "domContentLoadedMs": 34,
+          "loadMs": 70,
+          "requestsTotal": 21,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 429888,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 236687,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 1,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "full",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 8,
+          "longTasksMs": [
+            106,
+            53
+          ],
+          "maxLongTaskMs": 106,
+          "tbtProxyMs": 59,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 34,
+          "loadMs": 58,
+          "requestsTotal": 21,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 429888,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 236687,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 1,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "full",
+          "lcpMs": 80,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 80,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 8,
+          "longTasksMs": [
+            109,
+            55
+          ],
+          "maxLongTaskMs": 109,
+          "tbtProxyMs": 64,
+          "ttfbMs": 3,
+          "domContentLoadedMs": 35,
+          "loadMs": 58,
+          "requestsTotal": 21,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 429888,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 236687,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 1,
+          "gsapChunksLoaded": 1
+        }
+      ],
+      "budgets": [
+        {
+          "metric": "LCP",
+          "budget": 2500,
+          "unit": "ms",
+          "median": 76,
+          "worst": 80,
+          "pass": true
+        },
+        {
+          "metric": "INP (aprox., Event Timing)",
+          "budget": 200,
+          "unit": "ms",
+          "median": 40,
+          "worst": 40,
+          "pass": true
+        },
+        {
+          "metric": "CLS",
+          "budget": 0.1,
+          "unit": "",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "HTML + CSS comprimido",
+          "budget": 102400,
+          "unit": "bytes",
+          "median": 15849,
+          "worst": 15849,
+          "pass": true
+        },
+        {
+          "metric": "JS inicial comprimido (sem three/R3F e sem gsap)",
+          "budget": 133120,
+          "unit": "bytes",
+          "median": 165912,
+          "worst": 165912,
+          "pass": false
+        },
+        {
+          "metric": "Chunk da cena (three/R3F) comprimido",
+          "budget": 358400,
+          "unit": "bytes",
+          "median": 236687,
+          "worst": 236687,
+          "pass": true
+        },
+        {
+          "metric": "Imagem/arte fallback",
+          "budget": 122880,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Fontes no primeiro acesso",
+          "budget": 163840,
+          "unit": "bytes",
+          "median": 55860,
+          "worst": 55860,
+          "pass": true
+        },
+        {
+          "metric": "Requests antes do conteúdo útil (até o LCP)",
+          "budget": 20,
+          "unit": "requests",
+          "median": 14,
+          "worst": 14,
+          "pass": true
+        },
+        {
+          "metric": "Long task máxima",
+          "budget": 200,
+          "unit": "ms",
+          "median": 107,
+          "worst": 109,
+          "pass": true
+        },
+        {
+          "metric": "Terceiros",
+          "budget": 0,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "profile": "desktop",
+      "profileLabel": "desktop 1440x900 (modo full)",
+      "locale": "pt-br",
+      "assertsAgainstBudget": true,
+      "runs": [
+        {
+          "mode": "full",
+          "lcpMs": 72,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 72,
+          "cls": 0,
+          "inpMs": 32,
+          "interactionsObserved": 8,
+          "longTasksMs": [
+            105,
+            52
+          ],
+          "maxLongTaskMs": 105,
+          "tbtProxyMs": 57,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 31,
+          "loadMs": 54,
+          "requestsTotal": 21,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 429888,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 236687,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 1,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "full",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 8,
+          "longTasksMs": [
+            106,
+            52
+          ],
+          "maxLongTaskMs": 106,
+          "tbtProxyMs": 58,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 34,
+          "loadMs": 57,
+          "requestsTotal": 21,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 429888,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 236687,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 1,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "full",
+          "lcpMs": 76,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 76,
+          "cls": 0,
+          "inpMs": 32,
+          "interactionsObserved": 8,
+          "longTasksMs": [
+            104,
+            52
+          ],
+          "maxLongTaskMs": 104,
+          "tbtProxyMs": 56,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 33,
+          "loadMs": 69,
+          "requestsTotal": 21,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 429888,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 236687,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 1,
+          "gsapChunksLoaded": 1
+        }
+      ],
+      "budgets": [
+        {
+          "metric": "LCP",
+          "budget": 2500,
+          "unit": "ms",
+          "median": 76,
+          "worst": 76,
+          "pass": true
+        },
+        {
+          "metric": "INP (aprox., Event Timing)",
+          "budget": 200,
+          "unit": "ms",
+          "median": 32,
+          "worst": 40,
+          "pass": true
+        },
+        {
+          "metric": "CLS",
+          "budget": 0.1,
+          "unit": "",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "HTML + CSS comprimido",
+          "budget": 102400,
+          "unit": "bytes",
+          "median": 16134,
+          "worst": 16134,
+          "pass": true
+        },
+        {
+          "metric": "JS inicial comprimido (sem three/R3F e sem gsap)",
+          "budget": 133120,
+          "unit": "bytes",
+          "median": 165912,
+          "worst": 165912,
+          "pass": false
+        },
+        {
+          "metric": "Chunk da cena (three/R3F) comprimido",
+          "budget": 358400,
+          "unit": "bytes",
+          "median": 236687,
+          "worst": 236687,
+          "pass": true
+        },
+        {
+          "metric": "Imagem/arte fallback",
+          "budget": 122880,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Fontes no primeiro acesso",
+          "budget": 163840,
+          "unit": "bytes",
+          "median": 55860,
+          "worst": 55860,
+          "pass": true
+        },
+        {
+          "metric": "Requests antes do conteúdo útil (até o LCP)",
+          "budget": 20,
+          "unit": "requests",
+          "median": 14,
+          "worst": 14,
+          "pass": true
+        },
+        {
+          "metric": "Long task máxima",
+          "budget": 200,
+          "unit": "ms",
+          "median": 105,
+          "worst": 106,
+          "pass": true
+        },
+        {
+          "metric": "Terceiros",
+          "budget": 0,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "profile": "mobile-cpu4x",
+      "profileLabel": "mobile emulado 390x844 com CPU 4x mais lenta (CDP) — INFORMATIVO",
+      "locale": "en",
+      "assertsAgainstBudget": false,
+      "runs": [
+        {
+          "mode": "lite",
+          "lcpMs": 328,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 328,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 4,
+          "longTasksMs": [
+            53
+          ],
+          "maxLongTaskMs": 53,
+          "tbtProxyMs": 3,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 97,
+          "loadMs": 190,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 20,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "lite",
+          "lcpMs": 328,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 328,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 5,
+          "longTasksMs": [
+            53
+          ],
+          "maxLongTaskMs": 53,
+          "tbtProxyMs": 3,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 92,
+          "loadMs": 190,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 20,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "lite",
+          "lcpMs": 352,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 352,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 5,
+          "longTasksMs": [
+            57
+          ],
+          "maxLongTaskMs": 57,
+          "tbtProxyMs": 7,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 71,
+          "loadMs": 209,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 20,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        }
+      ],
+      "budgets": [
+        {
+          "metric": "LCP",
+          "budget": 2500,
+          "unit": "ms",
+          "median": 328,
+          "worst": 352,
+          "pass": true
+        },
+        {
+          "metric": "INP (aprox., Event Timing)",
+          "budget": 200,
+          "unit": "ms",
+          "median": 40,
+          "worst": 40,
+          "pass": true
+        },
+        {
+          "metric": "CLS",
+          "budget": 0.1,
+          "unit": "",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "HTML + CSS comprimido",
+          "budget": 102400,
+          "unit": "bytes",
+          "median": 15849,
+          "worst": 15849,
+          "pass": true
+        },
+        {
+          "metric": "JS inicial comprimido (sem three/R3F e sem gsap)",
+          "budget": 133120,
+          "unit": "bytes",
+          "median": 165912,
+          "worst": 165912,
+          "pass": false
+        },
+        {
+          "metric": "Chunk da cena (three/R3F) comprimido",
+          "budget": 358400,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Imagem/arte fallback",
+          "budget": 122880,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Fontes no primeiro acesso",
+          "budget": 163840,
+          "unit": "bytes",
+          "median": 55860,
+          "worst": 55860,
+          "pass": true
+        },
+        {
+          "metric": "Requests antes do conteúdo útil (até o LCP)",
+          "budget": 20,
+          "unit": "requests",
+          "median": 20,
+          "worst": 20,
+          "pass": true
+        },
+        {
+          "metric": "Long task máxima",
+          "budget": 200,
+          "unit": "ms",
+          "median": 53,
+          "worst": 57,
+          "pass": true
+        },
+        {
+          "metric": "Terceiros",
+          "budget": 0,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "profile": "mobile-cpu4x",
+      "profileLabel": "mobile emulado 390x844 com CPU 4x mais lenta (CDP) — INFORMATIVO",
+      "locale": "pt-br",
+      "assertsAgainstBudget": false,
+      "runs": [
+        {
+          "mode": "lite",
+          "lcpMs": 356,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 356,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 5,
+          "longTasksMs": [
+            57,
+            55
+          ],
+          "maxLongTaskMs": 57,
+          "tbtProxyMs": 12,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 104,
+          "loadMs": 208,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 20,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "lite",
+          "lcpMs": 204,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 204,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 5,
+          "longTasksMs": [
+            63,
+            60
+          ],
+          "maxLongTaskMs": 63,
+          "tbtProxyMs": 23,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 69,
+          "loadMs": 211,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "lite",
+          "lcpMs": 192,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 192,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 4,
+          "longTasksMs": [
+            55,
+            51
+          ],
+          "maxLongTaskMs": 55,
+          "tbtProxyMs": 6,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 70,
+          "loadMs": 198,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        }
+      ],
+      "budgets": [
+        {
+          "metric": "LCP",
+          "budget": 2500,
+          "unit": "ms",
+          "median": 204,
+          "worst": 356,
+          "pass": true
+        },
+        {
+          "metric": "INP (aprox., Event Timing)",
+          "budget": 200,
+          "unit": "ms",
+          "median": 40,
+          "worst": 40,
+          "pass": true
+        },
+        {
+          "metric": "CLS",
+          "budget": 0.1,
+          "unit": "",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "HTML + CSS comprimido",
+          "budget": 102400,
+          "unit": "bytes",
+          "median": 16134,
+          "worst": 16134,
+          "pass": true
+        },
+        {
+          "metric": "JS inicial comprimido (sem three/R3F e sem gsap)",
+          "budget": 133120,
+          "unit": "bytes",
+          "median": 165912,
+          "worst": 165912,
+          "pass": false
+        },
+        {
+          "metric": "Chunk da cena (three/R3F) comprimido",
+          "budget": 358400,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Imagem/arte fallback",
+          "budget": 122880,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Fontes no primeiro acesso",
+          "budget": 163840,
+          "unit": "bytes",
+          "median": 55860,
+          "worst": 55860,
+          "pass": true
+        },
+        {
+          "metric": "Requests antes do conteúdo útil (até o LCP)",
+          "budget": 20,
+          "unit": "requests",
+          "median": 14,
+          "worst": 20,
+          "pass": true
+        },
+        {
+          "metric": "Long task máxima",
+          "budget": 200,
+          "unit": "ms",
+          "median": 57,
+          "worst": 63,
+          "pass": true
+        },
+        {
+          "metric": "Terceiros",
+          "budget": 0,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "profileLabel": "mobile emulado 390x844 DPR3 (modo lite)",
+      "locale": "en",
+      "assertsAgainstBudget": true,
+      "runs": [
+        {
+          "mode": "lite",
+          "lcpMs": 108,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 108,
+          "cls": 0,
+          "inpMs": 48,
+          "interactionsObserved": 8,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 36,
+          "loadMs": 67,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 20,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "lite",
+          "lcpMs": 108,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 108,
+          "cls": 0,
+          "inpMs": 48,
+          "interactionsObserved": 8,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 37,
+          "loadMs": 68,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 20,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "lite",
+          "lcpMs": 68,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 68,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 8,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 35,
+          "loadMs": 70,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 10742,
+            "css": 5107,
+            "htmlPlusCss": 15849,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        }
+      ],
+      "budgets": [
+        {
+          "metric": "LCP",
+          "budget": 2500,
+          "unit": "ms",
+          "median": 108,
+          "worst": 108,
+          "pass": true
+        },
+        {
+          "metric": "INP (aprox., Event Timing)",
+          "budget": 200,
+          "unit": "ms",
+          "median": 48,
+          "worst": 48,
+          "pass": true
+        },
+        {
+          "metric": "CLS",
+          "budget": 0.1,
+          "unit": "",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "HTML + CSS comprimido",
+          "budget": 102400,
+          "unit": "bytes",
+          "median": 15849,
+          "worst": 15849,
+          "pass": true
+        },
+        {
+          "metric": "JS inicial comprimido (sem three/R3F e sem gsap)",
+          "budget": 133120,
+          "unit": "bytes",
+          "median": 165912,
+          "worst": 165912,
+          "pass": false
+        },
+        {
+          "metric": "Chunk da cena (three/R3F) comprimido",
+          "budget": 358400,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Imagem/arte fallback",
+          "budget": 122880,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Fontes no primeiro acesso",
+          "budget": 163840,
+          "unit": "bytes",
+          "median": 55860,
+          "worst": 55860,
+          "pass": true
+        },
+        {
+          "metric": "Requests antes do conteúdo útil (até o LCP)",
+          "budget": 20,
+          "unit": "requests",
+          "median": 20,
+          "worst": 20,
+          "pass": true
+        },
+        {
+          "metric": "Long task máxima",
+          "budget": 200,
+          "unit": "ms",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Terceiros",
+          "budget": 0,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "profileLabel": "mobile emulado 390x844 DPR3 (modo lite)",
+      "locale": "pt-br",
+      "assertsAgainstBudget": true,
+      "runs": [
+        {
+          "mode": "lite",
+          "lcpMs": 108,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 108,
+          "cls": 0,
+          "inpMs": 40,
+          "interactionsObserved": 8,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 2,
+          "domContentLoadedMs": 36,
+          "loadMs": 67,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 20,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "lite",
+          "lcpMs": 72,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 72,
+          "cls": 0,
+          "inpMs": 48,
+          "interactionsObserved": 8,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 3,
+          "domContentLoadedMs": 36,
+          "loadMs": 73,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        },
+        {
+          "mode": "lite",
+          "lcpMs": 72,
+          "lcpElement": "H1",
+          "lcpBeforeInteractionMs": 72,
+          "cls": 0,
+          "inpMs": 48,
+          "interactionsObserved": 8,
+          "longTasksMs": [],
+          "maxLongTaskMs": 0,
+          "tbtProxyMs": 0,
+          "ttfbMs": 3,
+          "domContentLoadedMs": 36,
+          "loadMs": 58,
+          "requestsTotal": 20,
+          "requestsBeforeLcp": 14,
+          "bytes": {
+            "html": 11027,
+            "css": 5107,
+            "htmlPlusCss": 16134,
+            "jsTotal": 193201,
+            "jsInitialExcludingSceneAndGsap": 165912,
+            "sceneChunk_threeR3F": 0,
+            "gsapChunk": 27289,
+            "fonts": 55860,
+            "images": 0,
+            "thirdParty": 0
+          },
+          "sceneChunksLoaded": 0,
+          "gsapChunksLoaded": 1
+        }
+      ],
+      "budgets": [
+        {
+          "metric": "LCP",
+          "budget": 2500,
+          "unit": "ms",
+          "median": 72,
+          "worst": 108,
+          "pass": true
+        },
+        {
+          "metric": "INP (aprox., Event Timing)",
+          "budget": 200,
+          "unit": "ms",
+          "median": 48,
+          "worst": 48,
+          "pass": true
+        },
+        {
+          "metric": "CLS",
+          "budget": 0.1,
+          "unit": "",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "HTML + CSS comprimido",
+          "budget": 102400,
+          "unit": "bytes",
+          "median": 16134,
+          "worst": 16134,
+          "pass": true
+        },
+        {
+          "metric": "JS inicial comprimido (sem three/R3F e sem gsap)",
+          "budget": 133120,
+          "unit": "bytes",
+          "median": 165912,
+          "worst": 165912,
+          "pass": false
+        },
+        {
+          "metric": "Chunk da cena (three/R3F) comprimido",
+          "budget": 358400,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Imagem/arte fallback",
+          "budget": 122880,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Fontes no primeiro acesso",
+          "budget": 163840,
+          "unit": "bytes",
+          "median": 55860,
+          "worst": 55860,
+          "pass": true
+        },
+        {
+          "metric": "Requests antes do conteúdo útil (até o LCP)",
+          "budget": 20,
+          "unit": "requests",
+          "median": 14,
+          "worst": 20,
+          "pass": true
+        },
+        {
+          "metric": "Long task máxima",
+          "budget": 200,
+          "unit": "ms",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        },
+        {
+          "metric": "Terceiros",
+          "budget": 0,
+          "unit": "bytes",
+          "median": 0,
+          "worst": 0,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

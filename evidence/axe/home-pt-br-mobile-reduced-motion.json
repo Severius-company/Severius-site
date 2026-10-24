@@ -1,0 +1,40 @@
+{
+  "name": "home-pt-br-mobile-reduced-motion",
+  "url": "http://127.0.0.1:3107/pt-br",
+  "axe": {
+    "name": "axe-core",
+    "version": "4.13.0"
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "passes": 29,
+  "incomplete": [
+    {
+      "id": "aria-prohibited-attr",
+      "nodes": [
+        ".signal"
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "nodes": [
+        "a[aria-label=\"Severius — Trabalho\"]",
+        ".language",
+        ".menu-trigger",
+        ".signal-states > li:nth-child(1) > strong",
+        ".signal-states > li:nth-child(2) > strong",
+        ".signal-states > li:nth-child(3) > strong",
+        ".signal-states > li:nth-child(4) > strong",
+        "h1",
+        ".hero-copy > p",
+        ".text-link[href$=\"#processo\"]"
+      ]
+    }
+  ],
+  "violations": []
+}

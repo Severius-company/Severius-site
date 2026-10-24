@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+playwright-report/
+test-results/
+coverage/
+.env*
+!.env.example
+.DS_Store
+*.log
+
+# Config de agentes/IDE: nunca vai para o repositório do site
+.claude/
+.mcp.json
+.codex/
+*.tsbuildinfo
+.vercel
+newsite2.0-codex/

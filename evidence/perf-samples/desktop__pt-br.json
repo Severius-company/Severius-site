@@ -1,0 +1,200 @@
+{
+  "profile": "desktop",
+  "profileLabel": "desktop 1440x900 (modo full)",
+  "locale": "pt-br",
+  "assertsAgainstBudget": true,
+  "runs": [
+    {
+      "mode": "full",
+      "lcpMs": 72,
+      "lcpElement": "H1",
+      "lcpBeforeInteractionMs": 72,
+      "cls": 0,
+      "inpMs": 32,
+      "interactionsObserved": 8,
+      "longTasksMs": [
+        105,
+        52
+      ],
+      "maxLongTaskMs": 105,
+      "tbtProxyMs": 57,
+      "ttfbMs": 2,
+      "domContentLoadedMs": 31,
+      "loadMs": 54,
+      "requestsTotal": 21,
+      "requestsBeforeLcp": 14,
+      "bytes": {
+        "html": 11027,
+        "css": 5107,
+        "htmlPlusCss": 16134,
+        "jsTotal": 429888,
+        "jsInitialExcludingSceneAndGsap": 165912,
+        "sceneChunk_threeR3F": 236687,
+        "gsapChunk": 27289,
+        "fonts": 55860,
+        "images": 0,
+        "thirdParty": 0
+      },
+      "sceneChunksLoaded": 1,
+      "gsapChunksLoaded": 1
+    },
+    {
+      "mode": "full",
+      "lcpMs": 76,
+      "lcpElement": "H1",
+      "lcpBeforeInteractionMs": 76,
+      "cls": 0,
+      "inpMs": 40,
+      "interactionsObserved": 8,
+      "longTasksMs": [
+        106,
+        52
+      ],
+      "maxLongTaskMs": 106,
+      "tbtProxyMs": 58,
+      "ttfbMs": 2,
+      "domContentLoadedMs": 34,
+      "loadMs": 57,
+      "requestsTotal": 21,
+      "requestsBeforeLcp": 14,
+      "bytes": {
+        "html": 11027,
+        "css": 5107,
+        "htmlPlusCss": 16134,
+        "jsTotal": 429888,
+        "jsInitialExcludingSceneAndGsap": 165912,
+        "sceneChunk_threeR3F": 236687,
+        "gsapChunk": 27289,
+        "fonts": 55860,
+        "images": 0,
+        "thirdParty": 0
+      },
+      "sceneChunksLoaded": 1,
+      "gsapChunksLoaded": 1
+    },
+    {
+      "mode": "full",
+      "lcpMs": 76,
+      "lcpElement": "H1",
+      "lcpBeforeInteractionMs": 76,
+      "cls": 0,
+      "inpMs": 32,
+      "interactionsObserved": 8,
+      "longTasksMs": [
+        104,
+        52
+      ],
+      "maxLongTaskMs": 104,
+      "tbtProxyMs": 56,
+      "ttfbMs": 2,
+      "domContentLoadedMs": 33,
+      "loadMs": 69,
+      "requestsTotal": 21,
+      "requestsBeforeLcp": 14,
+      "bytes": {
+        "html": 11027,
+        "css": 5107,
+        "htmlPlusCss": 16134,
+        "jsTotal": 429888,
+        "jsInitialExcludingSceneAndGsap": 165912,
+        "sceneChunk_threeR3F": 236687,
+        "gsapChunk": 27289,
+        "fonts": 55860,
+        "images": 0,
+        "thirdParty": 0
+      },
+      "sceneChunksLoaded": 1,
+      "gsapChunksLoaded": 1
+    }
+  ],
+  "budgets": [
+    {
+      "metric": "LCP",
+      "budget": 2500,
+      "unit": "ms",
+      "median": 76,
+      "worst": 76,
+      "pass": true
+    },
+    {
+      "metric": "INP (aprox., Event Timing)",
+      "budget": 200,
+      "unit": "ms",
+      "median": 32,
+      "worst": 40,
+      "pass": true
+    },
+    {
+      "metric": "CLS",
+      "budget": 0.1,
+      "unit": "",
+      "median": 0,
+      "worst": 0,
+      "pass": true
+    },
+    {
+      "metric": "HTML + CSS comprimido",
+      "budget": 102400,
+      "unit": "bytes",
+      "median": 16134,
+      "worst": 16134,
+      "pass": true
+    },
+    {
+      "metric": "JS inicial comprimido (sem three/R3F e sem gsap)",
+      "budget": 133120,
+      "unit": "bytes",
+      "median": 165912,
+      "worst": 165912,
+      "pass": false
+    },
+    {
+      "metric": "Chunk da cena (three/R3F) comprimido",
+      "budget": 358400,
+      "unit": "bytes",
+      "median": 236687,
+      "worst": 236687,
+      "pass": true
+    },
+    {
+      "metric": "Imagem/arte fallback",
+      "budget": 122880,
+      "unit": "bytes",
+      "median": 0,
+      "worst": 0,
+      "pass": true
+    },
+    {
+      "metric": "Fontes no primeiro acesso",
+      "budget": 163840,
+      "unit": "bytes",
+      "median": 55860,
+      "worst": 55860,
+      "pass": true
+    },
+    {
+      "metric": "Requests antes do conteúdo útil (até o LCP)",
+      "budget": 20,
+      "unit": "requests",
+      "median": 14,
+      "worst": 14,
+      "pass": true
+    },
+    {
+      "metric": "Long task máxima",
+      "budget": 200,
+      "unit": "ms",
+      "median": 105,
+      "worst": 106,
+      "pass": true
+    },
+    {
+      "metric": "Terceiros",
+      "budget": 0,
+      "unit": "bytes",
+      "median": 0,
+      "worst": 0,
+      "pass": true
+    }
+  ]
+}

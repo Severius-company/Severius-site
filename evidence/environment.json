@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-10-01T00:25:33.045Z",
+  "command": "npm run test:e2e",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "axeCorePlaywright": "4.13.0",
+  "axeCore": "4.13.0",
+  "next": "16.3.5",
+  "react": "19.2.0",
+  "three": "0.186.0",
+  "gsap": "3.15.0",
+  "node": "v26.10.0",
+  "os": "Darwin 25.6.0 arm64",
+  "cpu": "Apple M4 Pro",
+  "cpuCount": 12,
+  "memoryGB": 26,
+  "contentHash": "4c3fb1bcf19427ad",
+  "siteOriginEnv": null,
+  "finishedAt": "2026-10-01T00:34:05.749Z",
+  "contentHashEnd": "e10b4e7334733677",
+  "sourceChangedDuringRun": true
+}
