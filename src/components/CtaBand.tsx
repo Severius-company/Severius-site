@@ -13,7 +13,7 @@ export function CtaBand({ locale, dict }: { locale: Locale; dict: Dictionary }) 
           {dict.cta.title}
         </h2>
         <p className="m-0 max-w-[56ch] text-[17px] leading-[1.6] text-hero-muted">{dict.cta.body}</p>
-        <LinkButton href={localePath(locale, '/contact')} className="h-14 px-7 text-base">{dict.cta.button}</LinkButton>
+        <LinkButton href={localePath(locale, '/contact')} className="min-h-14 px-7 text-base">{dict.cta.button}</LinkButton>
       </Reveal>
     </section>
   )

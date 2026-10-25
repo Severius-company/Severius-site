@@ -6,7 +6,7 @@ export function TestimonialCard({ quote, delay }: { quote: Quote; delay?: number
   return (
     <Reveal as="figure" delay={delay} className="glass-panel m-0 flex flex-col gap-3.5 rounded-r border p-7">
       <blockquote className="m-0 flex flex-1 flex-col gap-3.5">
-        <p className="m-0 text-[19px] leading-[1.35] font-medium text-accent">{quote.title}</p>
+        <p className="m-0 text-[19px] leading-[1.5] font-medium text-accent">{quote.title}</p>
         <p className="m-0 flex-1 text-[15px] leading-[1.6] text-muted">{quote.body}</p>
       </blockquote>
       <figcaption className="flex items-center gap-3 border-t border-line pt-4">

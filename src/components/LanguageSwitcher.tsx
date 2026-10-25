@@ -29,11 +29,11 @@ function Links({ locale, labels, groupLabel, className, onNavigate, search }: Pr
               aria-current={active ? 'true' : undefined}
               onClick={onNavigate}
               className={cx(
-                'flex size-10 items-center justify-center rounded-rb border transition-colors duration-150',
-                active ? 'glass-control border-accent ring-1 ring-accent' : 'border-line2 bg-white/[0.025] opacity-75 backdrop-blur-md hover:bg-white/[0.08] hover:opacity-100',
+                'flex size-11 items-center justify-center rounded-rb border transition-colors duration-150',
+                active ? 'glass-control border-accent ring-2 ring-accent' : 'border-line2 bg-white/[0.025] backdrop-blur-md hover:border-hero-muted hover:bg-white/[0.08]',
               )}
             >
-              <Flag className="block h-4 w-[22px] rounded-[2px]" />
+              <Flag className="flag block h-4 w-[22px] rounded-[2px]" />
             </Link>
           </li>
         )

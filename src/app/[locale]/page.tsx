@@ -34,7 +34,7 @@ export default async function HomePage({ params }: Props) {
     <>
       <HeroHome locale={locale} dict={d} />
 
-      <ScrollStory locale={locale} />
+      <ScrollStory t={d.scrollStory} />
 
       <Container as="section" aria-labelledby="services-title" className={SECTION}>
         <SectionHeader id="services-title" title={d.home.servicesTitle} body={d.home.servicesBody} />
@@ -48,7 +48,7 @@ export default async function HomePage({ params }: Props) {
       <Container as="section" aria-labelledby="work-title" className={SECTION}>
         <Reveal className="mb-9 flex flex-wrap items-end justify-between gap-4">
           <h2 id="work-title" className={H2}>{d.home.selectedWork}</h2>
-          <LinkButton href={localePath(locale, '/work')} variant="secondary" className="h-12 px-5">
+          <LinkButton href={localePath(locale, '/work')} variant="secondary" className="min-h-12 px-5">
             {fill(d.home.seeAll, { n: works.length })}<span className="flex text-lg"><Icon name="arrowR" /></span>
           </LinkButton>
         </Reveal>

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata(locale, '/contact', h.title, h.body)
 }
 
-const ROW = 'flex h-16 items-center gap-3.5 rounded-rb border border-line bg-surface px-5 text-base font-medium'
+const ROW = 'flex min-h-16 items-center gap-3.5 rounded-rb border border-line bg-surface px-5 text-base font-medium'
 
 export default async function ContactPage({ params }: Props) {
   const locale = (await params).locale as Locale

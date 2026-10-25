@@ -32,12 +32,12 @@ export function HeroHome({ locale, dict }: { locale: Locale; dict: Dictionary })
             <span>{t.and}</span><Tag>{d}</Tag>
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <LinkButton href={localePath(locale, '/work')} variant="secondary" className="h-14 px-[26px] text-[17px]">{t.ourWorks}</LinkButton>
-            <LinkButton href={localePath(locale, '/contact')} className="h-14 px-[26px] text-[17px]">{t.startProject}</LinkButton>
+            <LinkButton href={localePath(locale, '/work')} variant="secondary" className="min-h-14 px-[26px] text-[17px]">{t.ourWorks}</LinkButton>
+            <LinkButton href={localePath(locale, '/contact')} className="min-h-14 px-[26px] text-[17px]">{t.startProject}</LinkButton>
           </div>
           <span className="text-sm text-hero-muted">{t.trusted}</span>
         </div>
-        <span aria-hidden="true" className="hero-scroll-cue"><i />Scroll</span>
+        <span aria-hidden="true" className="hero-scroll-cue"><i />{t.scrollCue}</span>
       </div>
     </section>
   )

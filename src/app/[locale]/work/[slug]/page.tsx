@@ -39,14 +39,14 @@ export default async function CasePage({ params }: Props) {
   return (
     <>
       <Container as="article" className="pt-7 pb-[clamp(56px,7vw,96px)]">
-        <Link href={localePath(locale, '/work')} className={buttonClasses('secondary', 'mb-7 h-[42px] gap-1.5 pr-3.5 pl-2 text-sm')}>
+        <Link href={localePath(locale, '/work')} className={buttonClasses('secondary', 'mb-7 min-h-[42px] gap-1.5 pr-3.5 pl-2 text-sm')}>
           <span className="flex text-lg"><Icon name="chevL" /></span>{t.allWork}
         </Link>
         <div className="grid animate-hero-in grid-cols-[repeat(auto-fit,minmax(min(100%,440px),1fr))] items-start gap-x-16 gap-y-10">
           <div className="flex flex-col items-start gap-[18px]">
             <span className="text-sm font-semibold tracking-[.06em] text-accent uppercase">{work.type}</span>
             <h1 className="m-0 text-[length:clamp(40px,5vw,64px)] leading-[1.05] font-semibold tracking-[-0.01em]">{work.client}</h1>
-            <p className="m-0 text-xl leading-[1.35]">{work.category}</p>
+            <p className="m-0 text-xl leading-[1.5]">{work.category}</p>
             <Tag variant="muted">{work.url}</Tag>
             <p className="m-0 text-[17px] leading-[1.65] text-muted">{work.desc}</p>
             <ul aria-label={t.scope} className="m-0 flex list-none flex-wrap gap-2 p-0">
@@ -58,15 +58,15 @@ export default async function CasePage({ params }: Props) {
         {work.quote ? (
           <Reveal as="figure" className="mx-0 mt-14 mb-0 flex flex-col gap-4 rounded-r border border-line bg-surface p-8">
             <blockquote className="m-0 flex flex-col gap-4">
-              <p className="m-0 max-w-[40ch] text-[length:clamp(20px,2.2vw,28px)] leading-[1.3] font-medium text-accent">{work.quote.title}</p>
+              <p className="m-0 max-w-[40ch] text-[length:clamp(20px,2.2vw,28px)] leading-[1.5] font-medium text-accent">{work.quote.title}</p>
               <p className="m-0 max-w-[70ch] text-base leading-[1.6] text-muted">{work.quote.body}</p>
             </blockquote>
             <figcaption className="text-[15px]">{work.quote.name} · <span className="text-muted">{work.quote.role}</span></figcaption>
           </Reveal>
         ) : null}
         <Reveal className="mt-8 flex flex-wrap gap-3">
-          <LinkButton href={localePath(locale, '/contact')} className="h-14 px-[26px] text-base">{t.startSimilar}</LinkButton>
-          <LinkButton href={localePath(locale, `/work/${next.slug}`)} variant="secondary" className="h-14 gap-2.5 px-[22px] text-base">
+          <LinkButton href={localePath(locale, '/contact')} className="min-h-14 px-[26px] text-base">{t.startSimilar}</LinkButton>
+          <LinkButton href={localePath(locale, `/work/${next.slug}`)} variant="secondary" className="min-h-14 gap-2.5 px-[22px] text-base">
             {fill(t.next, { client: next.client })}<span className="flex text-lg"><Icon name="arrowR" /></span>
           </LinkButton>
         </Reveal>

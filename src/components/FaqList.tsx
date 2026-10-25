@@ -25,7 +25,7 @@ export function FaqList({ faqs }: { faqs: { q: string; a: string }[] }) {
                 className={cx('flex w-full items-center gap-4 bg-transparent py-5 text-left transition-colors duration-150', isOpen ? 'text-accent' : 'text-text hover:text-accent')}
               >
                 <span aria-hidden="true" className="flex size-12 flex-none items-center justify-center rounded-rb bg-surface2 text-[17px] font-semibold">{pad2(i + 1)}</span>
-                <span className="flex-1 text-[17px] leading-[1.35] font-medium">{f.q}</span>
+                <span className="flex-1 text-[17px] leading-[1.5] font-medium">{f.q}</span>
                 <span aria-hidden="true" className="flex text-[22px]"><Icon name={isOpen ? 'x' : 'plus'} /></span>
               </button>
             </h3>

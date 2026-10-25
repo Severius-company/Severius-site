@@ -21,10 +21,15 @@ export function ServicesTabs({ services, locale, tabsAria, initialIndex = 0 }: {
   }
 
   const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
-    const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0
-    if (!dir) return
+    const last = services.length - 1
+    const next =
+      e.key === 'ArrowRight' ? (index + 1) % services.length
+      : e.key === 'ArrowLeft' ? (index + last) % services.length
+      : e.key === 'Home' ? 0
+      : e.key === 'End' ? last
+      : -1
+    if (next < 0) return
     e.preventDefault()
-    const next = (index + dir + services.length) % services.length
     select(next)
     tabs.current[next]?.focus()
   }
@@ -47,7 +52,7 @@ export function ServicesTabs({ services, locale, tabsAria, initialIndex = 0 }: {
               onClick={() => select(i)}
               onKeyDown={onKeyDown}
               className={cx(
-                'h-[46px] flex-1 rounded-seg-in px-2 text-[15px] leading-tight font-semibold transition-colors duration-150',
+                'min-h-[46px] flex-1 rounded-seg-in px-2 text-[15px] leading-tight font-semibold transition-colors duration-150',
                 on ? 'bg-accent text-on-accent' : 'text-text hover:bg-surface-hover',
               )}
             >

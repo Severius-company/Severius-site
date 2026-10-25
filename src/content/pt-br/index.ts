@@ -30,6 +30,15 @@ export const ptBr: Dictionary = {
     ourWorks: 'Nossos projetos',
     startProject: 'Iniciar projeto',
     trusted: 'Mais de 250 empresas confiam na gente',
+    scrollCue: 'Role',
+  },
+  scrollStory: {
+    statement: 'Você não precisa acompanhar cada detalhe para saber que o projeto está avançando. Nosso processo é silencioso, transparente e orientado a resultados: um time focado transformando complexidade em software sólido.',
+    stats: [
+      { value: 250, suffix: '+', label: 'empresas confiam na Severius' },
+      { value: 3, suffix: '', label: 'disciplinas trabalhando como uma só' },
+      { value: 10, suffix: '', label: 'soluções no portfólio' },
+    ],
   },
   home: {
     servicesTitle: 'Nossos serviços',
@@ -187,6 +196,9 @@ export const ptBr: Dictionary = {
       sentNamePrefix: ', ',
       sentEmailPrefix: ' para ',
       sendAnother: 'Enviar outra',
+      requiredNote: 'Campos marcados com * são obrigatórios.',
+      requiredLabel: 'obrigatório',
+      emailHint: 'Por exemplo: nome@empresa.com',
     },
     faqTitle: 'Perguntas frequentes',
     faqBody: 'Ainda tem dúvidas? Fale com o nosso time pelo {email}',

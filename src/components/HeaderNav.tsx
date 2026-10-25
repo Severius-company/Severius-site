@@ -20,7 +20,7 @@ export function HeaderNav({ locale, items }: { locale: Locale; items: NavItem[] 
               href={localePath(locale, link.href)}
               aria-current={active ? 'page' : undefined}
               className={cx(
-                'flex h-[42px] items-center rounded-rb px-4 text-[15px] font-medium whitespace-nowrap transition-colors duration-150',
+                'flex min-h-11 items-center rounded-rb px-4 text-[15px] font-medium whitespace-nowrap transition-colors duration-150',
                 active ? 'glass-nav-active text-text' : 'text-hero-muted hover:bg-white/[0.05] hover:text-text',
               )}
             >

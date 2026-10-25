@@ -16,7 +16,7 @@ export default function NotFound() {
         <div key={v.cls} className={`${v.cls} mx-auto flex max-w-[1280px] flex-col items-center gap-[18px] px-[clamp(20px,4vw,48px)] py-[clamp(64px,10vw,140px)] text-center`}>
           <h1 className="m-0 text-[length:clamp(40px,5vw,68px)] leading-[1.06] font-semibold">{v.t.title}</h1>
           <p className="m-0 text-lg text-hero-muted">{v.t.body}</p>
-          <LinkButton href={v.href} className="h-14 px-7 text-base">{v.t.back}</LinkButton>
+          <LinkButton href={v.href} className="min-h-14 px-7 text-base">{v.t.back}</LinkButton>
         </div>
       ))}
     </section>

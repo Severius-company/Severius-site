@@ -14,7 +14,7 @@ export function ServiceCard({ service, locale, learnMore, learnMoreAria, delay }
       <LinkButton
         href={localePath(locale, `/services?tab=${service.id}`)}
         variant="surface"
-        className="h-[50px] w-full"
+        className="min-h-[50px] w-full"
         aria-label={fill(learnMoreAria, { title: service.title })}
       >
         {learnMore}

@@ -5,7 +5,7 @@ import { cx } from '@/lib/cx'
 export type ButtonVariant = 'primary' | 'secondary' | 'surface'
 
 const BASE =
-  'inline-flex items-center justify-center gap-2 rounded-rb text-[15px] transition-[background-color,border-color,box-shadow,transform] duration-200 ease-out whitespace-nowrap active:translate-y-px'
+  'inline-flex items-center justify-center gap-2 rounded-rb text-[15px] transition-[background-color,border-color,box-shadow,transform] duration-200 ease-out text-center motion-safe:active:translate-y-px'
 
 const VARIANTS: Record<ButtonVariant, string> = {
   primary: 'glass-accent font-semibold',

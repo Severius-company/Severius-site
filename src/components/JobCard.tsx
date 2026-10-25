@@ -22,7 +22,7 @@ export function JobCard({ job, applied, onApply, labels }: { job: JobCardData; a
         aria-pressed={applied}
         aria-label={(applied ? labels.appliedAria : labels.applyAria).replace('{title}', job.title)}
         className={cx(
-          'h-12 rounded-rb text-[15px] font-semibold transition-colors duration-150',
+          'min-h-12 rounded-rb text-[15px] font-semibold transition-colors duration-150',
           applied ? 'glass-control border text-accent' : 'glass-accent text-on-accent',
         )}
       >

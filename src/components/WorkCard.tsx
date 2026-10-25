@@ -17,7 +17,7 @@ export function WorkCard({ work, locale, shotTemplate }: { work: WorkCardData; l
   return (
     <Link
       href={localePath(locale, `/work/${work.slug}`)}
-      className="glass-panel group flex h-full flex-col gap-[18px] rounded-r border p-6 text-left transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-1 hover:border-accent/30 hover:shadow-[0_26px_70px_rgba(0,0,0,.3)]"
+      className="glass-panel group flex h-full flex-col gap-[18px] rounded-r border p-6 text-left transition-[border-color,box-shadow,transform] duration-200 motion-safe:hover:-translate-y-1 hover:border-accent/30 hover:shadow-[0_26px_70px_rgba(0,0,0,.3)]"
     >
       <span className="text-[15px] text-muted">{work.category}</span>
       <WorkShot label={shotLabel(shotTemplate, work)} className="aspect-[16/10] rounded-rb" />

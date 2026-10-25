@@ -22,7 +22,8 @@ export default async function WorkPage({ params }: Props) {
   return (
     <>
       <PageHeader title={d.headers.work.title} body={d.headers.work.body} />
-      <Container as="section" aria-label={d.workUi.projectsAria} className="pt-9 pb-[clamp(56px,7vw,96px)]">
+      <Container as="section" aria-labelledby="projects-title" className="pt-9 pb-[clamp(56px,7vw,96px)]">
+        <h2 id="projects-title" className="sr-only">{d.workUi.projectsAria}</h2>
         <WorkGrid works={works} locale={locale} t={d.workUi} />
       </Container>
       <CtaBand locale={locale} dict={d} />

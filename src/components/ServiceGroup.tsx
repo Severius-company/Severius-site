@@ -10,7 +10,7 @@ export function ServiceGroup({ title, items, delay }: { title: string; items: st
         {items.map((label, i) => (
           <li key={label} className="flex flex-col gap-4 bg-bg px-6 py-[22px]">
             <IconBox size={38}>{pad2(i + 1)}</IconBox>
-            <span className="text-base leading-[1.45]">{label}</span>
+            <span className="text-base leading-[1.5]">{label}</span>
           </li>
         ))}
       </ol>

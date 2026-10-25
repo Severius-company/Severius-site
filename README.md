@@ -33,6 +33,25 @@ Site da Severius (estúdio de produtos digitais), tema escuro "Studio Dark".
 link some de header, footer, menu mobile e sitemap. O código e o conteúdo continuam no projeto; para
 reativar, troque a flag para `true`.
 
+## Acessibilidade
+
+Meta: WCAG 2.2 AA com reforços AAA onde é tecnicamente aplicável (não é uma declaração de conformidade AAA total).
+
+- **Contraste AAA (1.4.6):** tokens em `src/app/globals.css`; `src/lib/contrast.test.ts` recalcula as
+  razões (>= 7:1 texto normal, >= 4.5:1 texto grande), inclusive sobre o pior caso dos painéis de vidro.
+  Também há suporte a `prefers-contrast: more` e `forced-colors`.
+- **Movimento:** `prefers-reduced-motion` desliga fade-in, parallax do hero, ScrollStory, spotlight do
+  ponteiro e transições. Sem JS, todo o conteúdo fica visível (SSR).
+- **Teclado:** skip link como primeiro focável; foco visível de 2px em #9EFF00 e nunca coberto pelo header
+  sticky (`scroll-padding-top`); menu mobile com foco preso, Esc e fundo `inert`; abas por setas/Home/End.
+- **Alvos de toque** >= 44×44 px; reflow em 320 px e text-spacing (1.4.12) testados.
+- **Formulário:** `required`, `autocomplete`, dica e erro ligados por `aria-describedby`, erro com
+  `role="alert"` e foco no primeiro campo inválido, sucesso em `role="status"`.
+- **Testes:** `e2e/a11y.spec.ts` (axe-core: wcag2a/aa, 21a/aa, 22aa, best-practice e `color-contrast-enhanced`
+  em todas as rotas, nos 2 idiomas, em 390/1440/1920, com reduced-motion, forced-colors, menu aberto e
+  formulário em erro/sucesso) e `e2e/motion-a11y.spec.ts` (foco, alvos, reflow, movimento).
+  A revisão manual cobre o que o axe não verifica (1.4.8, 2.4.9, 3.1.x etc.).
+
 ## Comandos
 
 ```bash

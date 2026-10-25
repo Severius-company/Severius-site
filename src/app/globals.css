@@ -10,14 +10,18 @@
   --color-line: #262626;
   --color-line2: #3a3a3a;
   --color-text: #ffffff;
-  --color-muted: #98989a;
-  --color-hero-muted: #b3b3b3;
+  /* AAA 1.4.6: muted >= 7:1 sobre bg/surface/surface2 e sobre os painéis de vidro (ver contrast.test.ts) */
+  --color-muted: #c2c2c2;
+  --color-hero-muted: #c8c8c8;
+  --color-placeholder: #a6a6a6;
+  /* 1.4.11: borda de campo de formulário >= 3:1 sobre o fundo */
+  --color-field-border: #737373;
   --color-accent: #9eff00;
   --color-accent-hover: #b1ff33;
   --color-on-accent: #141414;
   --color-num: #c5ff66;
-  --color-err: #ff8a7a;
-  --color-st-text: #7a7a7a;
+  --color-err: #ffb0a6;
+  --color-st-text: #b0b0b0;
 
   --radius-r: 12px;
   --radius-rb: 8px;
@@ -60,6 +64,8 @@
 
 @layer base {
   html {
+    /* foco nunca escondido sob o header sticky (2.4.11/2.4.12) */
+    scroll-padding-top: 96px;
     --spotlight-x: -1000px;
     --spotlight-y: -1000px;
     color-scheme: dark;
@@ -83,8 +89,15 @@
   }
   input::placeholder,
   textarea::placeholder {
-    color: currentColor;
-    opacity: 0.45;
+    color: var(--color-placeholder);
+    opacity: 1;
+  }
+  /* 1.4.8: linhas de texto corrido com no máximo ~80 caracteres */
+  :where(p) {
+    max-width: 75ch;
+  }
+  :where(main:focus) {
+    outline: none;
   }
   :focus-visible {
     outline: 2px solid var(--color-accent);
@@ -109,8 +122,8 @@
 .glass-panel {
   background:
     radial-gradient(240px 240px at var(--spotlight-x) var(--spotlight-y), rgba(158, 255, 0, 0.14), transparent 72%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 38%),
-    radial-gradient(circle at 12% 0%, rgba(158, 255, 0, 0.08), transparent 46%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 38%),
+    radial-gradient(circle at 12% 0%, rgba(158, 255, 0, 0.06), transparent 46%),
     rgba(26, 26, 26, 0.62);
   background-attachment: fixed, scroll, scroll, scroll;
   border-color: rgba(255, 255, 255, 0.1);
@@ -126,7 +139,7 @@
   border-color: rgba(255, 255, 255, 0.12);
   background:
     radial-gradient(180px 180px at var(--spotlight-x) var(--spotlight-y), rgba(158, 255, 0, 0.18), transparent 74%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 46%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 46%),
     rgba(38, 38, 38, 0.68);
   background-attachment: fixed, scroll, scroll;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.12), 0 10px 28px rgba(0, 0, 0, 0.2);
@@ -309,11 +322,13 @@
   width: 1px;
   height: 24px;
   background: linear-gradient(var(--color-accent), transparent);
-  animation: scroll-cue 1.8s ease-in-out infinite;
+  /* 2.2.2: para sozinho (3 ciclos, < 5 s) */
+  animation: scroll-cue 1.6s ease-in-out 3;
 }
 
 .scroll-story {
-  --story-progress: 0;
+  /* 1 = tudo aceso: é o estado sem JS/SSR; o cliente ajusta conforme a rolagem */
+  --story-progress: 1;
   min-height: 190svh;
   position: relative;
   background: #0d0d0d;
@@ -332,7 +347,8 @@
   text-wrap: balance;
 }
 .scroll-story-copy span {
-  color: rgba(255, 255, 255, clamp(.14, calc((var(--story-progress) * var(--word-count) - var(--word-index)) * .42), 1));
+  /* de #8a8a8a (5.6:1 sobre #0d0d0d, texto grande: AAA) até branco */
+  color: color-mix(in srgb, #ffffff calc(clamp(0, (var(--story-progress) * (var(--word-count) + 3) - var(--word-index)) * .42, 1) * 100%), #8a8a8a);
   transition: color 80ms linear;
 }
 .scroll-story-stats {
@@ -425,10 +441,19 @@
     min-height: auto;
   }
   .hero-scroll-copy,
-  .hero-sculpture,
   .scroll-story-stats {
     transform: none !important;
     opacity: 1 !important;
+  }
+  /* escultura do hero fica parada no estado inicial (centrada), sem parallax */
+  .hero-sculpture {
+    transform: translate3d(-50%, -50%, 0) scale(.72) !important;
+    opacity: .28 !important;
+  }
+  .hero-halo-one,
+  .hero-halo-two,
+  .hero-halo-three {
+    transition: none !important;
   }
   .scroll-story-copy span {
     color: var(--color-text) !important;
@@ -436,10 +461,77 @@
   .hero-scroll-cue {
     display: none;
   }
+  html {
+    /* spotlight do ponteiro desligado (2.3.3) mesmo se o JS já estiver rodando */
+    --spotlight-x: -1000px !important;
+    --spotlight-y: -1000px !important;
+    scroll-behavior: auto !important;
+  }
   *,
   *::before,
   *::after {
     transition-duration: 0ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Alto contraste pedido pelo sistema */
+@media (prefers-contrast: more) {
+  :root {
+    --color-muted: #e6e6e6;
+    --color-hero-muted: #ededed;
+    --color-placeholder: #cfcfcf;
+    --color-line: #6b6b6b;
+    --color-line2: #9a9a9a;
+    --color-field-border: #a3a3a3;
+  }
+  :where(.glass-bar, .glass-panel, .glass-control, .glass-icon, .glass-nav-active) {
+    background: #141414 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border-color: #9a9a9a !important;
+  }
+  :where(.glass-panel, .glass-control, .glass-accent, .glass-nav-active, .glass-icon)::before {
+    display: none;
+  }
+  .scroll-story-copy span {
+    color: #ffffff !important;
+  }
+}
+
+/* Modo de cores forçadas (Windows High Contrast) */
+@media (forced-colors: active) {
+  /* garante cores do sistema mesmo onde a cor vem de variáveis/color-mix */
+  :where(body, body *) {
+    color: CanvasText;
+  }
+  :where(a, a *) {
+    color: LinkText;
+  }
+  :where(button, button *) {
+    color: ButtonText;
+  }
+  :where(.glass-panel, .glass-control, .glass-accent, .glass-nav-active, .glass-icon)::before {
+    display: none;
+  }
+  :where(.glass-control, .glass-accent, .glass-nav-active, .glass-icon, .glass-panel) {
+    border: 1px solid CanvasText;
+  }
+  :where([aria-pressed='true'], [aria-selected='true'], [aria-current='page'], [aria-current='true']) {
+    outline: 3px solid Highlight;
+    outline-offset: 1px;
+  }
+  :focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 3px;
+  }
+  .flag {
+    forced-color-adjust: none;
+  }
+  .hero-sculpture,
+  .hero-scroll-cue {
+    display: none;
   }
 }
 

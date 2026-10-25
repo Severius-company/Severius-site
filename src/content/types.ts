@@ -109,13 +109,19 @@ export interface ContactFormDict {
   /** " to " antes do e-mail */
   sentEmailPrefix: string
   sendAnother: string
+  /** Nota sobre campos obrigatórios */
+  requiredNote: string
+  /** Texto curto exibido ao lado dos rótulos obrigatórios (ex.: "required") */
+  requiredLabel: string
+  emailHint: string
 }
 
 export interface Dictionary {
   locale: Locale
   meta: { homeTitle: string; homeDescription: string; titleSuffix: string }
   nav: NavDict
-  hero: { line1: string; line2: string; for: string; and: string; audiences: [string, string, string, string]; ourWorks: string; startProject: string; trusted: string }
+  hero: { line1: string; line2: string; for: string; and: string; audiences: [string, string, string, string]; ourWorks: string; startProject: string; trusted: string; scrollCue: string }
+  scrollStory: { statement: string; stats: { value: number; suffix: string; label: string }[] }
   home: { servicesTitle: string; servicesBody: string; learnMore: string; learnMoreAria: string; selectedWork: string; seeAll: string; whyTitle: string; whyBody: string; quotesTitle: string }
   headers: Record<HeaderKey, TitleBody>
   services: Record<ServiceId, ServiceText>

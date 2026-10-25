@@ -53,11 +53,11 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={HTML_LANG[locale]} className={`${barlow.variable} ${barlow.className}`}>
       <body className="min-h-screen bg-bg font-sans text-text">
         <SpotlightGlow />
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-rb focus:bg-accent focus:px-4 focus:py-2 focus:text-on-accent">
+        <a href="#main" data-skip-link className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-rb focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-on-accent">
           {dict.nav.skip}
         </a>
         <Header locale={locale} dict={dict} />
-        <main id="main">{children}</main>
+        <main id="main" tabIndex={-1}>{children}</main>
         <Footer locale={locale} dict={dict} />
       </body>
     </html>

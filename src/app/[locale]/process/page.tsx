@@ -22,7 +22,8 @@ export default async function ProcessPage({ params }: Props) {
   return (
     <>
       <PageHeader title={d.headers.process.title} body={d.headers.process.body} />
-      <Container as="section" aria-label={d.processAria} className="py-[clamp(48px,6vw,80px)]">
+      <Container as="section" aria-labelledby="process-steps-title" className="py-[clamp(48px,6vw,80px)]">
+        <h2 id="process-steps-title" className="sr-only">{d.processAria}</h2>
         <ol className="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] gap-px overflow-hidden rounded-r border border-line bg-line p-0">
           {d.steps.map((s, i) => <StepCard key={s.title} n={pad2(i + 1)} title={s.title} body={s.body} label={d.stepLabel} delay={(i % 2) * 80} />)}
         </ol>

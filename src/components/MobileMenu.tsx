@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { buttonClasses } from '@/components/Button'
 import type { NavItem } from '@/components/HeaderNav'
 import { Icon } from '@/components/Icon'
@@ -16,15 +16,42 @@ export function MobileMenu({ locale, items, t }: { locale: Locale; items: NavIte
   const [open, setOpen] = useState(false)
   const base = stripLocale(usePathname() ?? '/')
 
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const returnFocus = useRef(false)
+
   useEffect(() => {
-    if (!open) return
+    if (!open) {
+      if (returnFocus.current) toggleRef.current?.focus()
+      returnFocus.current = false
+      return
+    }
+    // Fundo inerte (main, footer, skip link) + foco preso entre o botão e o painel.
+    const outside = [document.getElementById('main'), document.querySelector('body > footer'), document.querySelector('[data-skip-link]')]
+      .filter((el): el is HTMLElement => el instanceof HTMLElement)
+    outside.forEach(el => el.setAttribute('inert', ''))
+    const focusables = () => [toggleRef.current, ...Array.from(panelRef.current?.querySelectorAll<HTMLElement>('a[href], button') ?? [])]
+      .filter((el): el is HTMLElement => !!el)
+    focusables()[1]?.focus()
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
+      if (e.key === 'Escape') {
+        returnFocus.current = true
+        setOpen(false)
+        return
+      }
+      if (e.key !== 'Tab') return
+      const list = focusables()
+      const first = list[0]
+      const last = list[list.length - 1]
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus() }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
     }
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKey)
     return () => {
+      outside.forEach(el => el.removeAttribute('inert'))
       document.body.style.overflow = prev
       window.removeEventListener('keydown', onKey)
     }
@@ -39,12 +66,16 @@ export function MobileMenu({ locale, items, t }: { locale: Locale; items: NavIte
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label={open ? t.closeMenu : t.openMenu}
-        onClick={() => setOpen(o => !o)}
+        ref={toggleRef}
+        onClick={() => {
+          returnFocus.current = open
+          setOpen(o => !o)
+        }}
         className="glass-control relative z-50 flex size-11 items-center justify-center rounded-rb border text-2xl text-accent transition-colors duration-150"
       >
         <Icon name={open ? 'x' : 'menu'} />
       </button>
-      <div id="mobile-menu" hidden={!open} className="fixed inset-x-0 top-[73px] bottom-0 z-40 overflow-y-auto border-t border-white/10 bg-bg/85 backdrop-blur-2xl">
+      <div ref={panelRef} id="mobile-menu" hidden={!open} className="fixed inset-x-0 top-[73px] bottom-0 z-40 overflow-y-auto border-t border-white/10 bg-bg/95 backdrop-blur-2xl">
         <nav aria-label={t.mobileAria} className="flex flex-col gap-2 px-5 py-6">
           {items.map(link => {
             const active = isActiveLink(base, link.href)
@@ -55,7 +86,7 @@ export function MobileMenu({ locale, items, t }: { locale: Locale; items: NavIte
                 onClick={close}
                 aria-current={active ? 'page' : undefined}
                 className={cx(
-                  'flex h-14 items-center rounded-rb px-4 text-xl font-medium transition-colors duration-150',
+                  'flex min-h-14 items-center rounded-rb px-4 text-xl font-medium transition-colors duration-150',
                   active ? 'glass-nav-active text-text' : 'text-hero-muted hover:bg-white/[0.06] hover:text-text',
                 )}
               >
@@ -63,7 +94,7 @@ export function MobileMenu({ locale, items, t }: { locale: Locale; items: NavIte
               </Link>
             )
           })}
-          <Link href={localePath(locale, '/contact')} onClick={close} className={buttonClasses('primary', 'mt-4 h-14 text-base')}>
+          <Link href={localePath(locale, '/contact')} onClick={close} className={buttonClasses('primary', 'mt-4 min-h-14 text-base')}>
             {t.contact}
           </Link>
           <LanguageSwitcher locale={locale} labels={t.languages} groupLabel={t.languageAria} onNavigate={close} className="mt-4 justify-center" />

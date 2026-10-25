@@ -16,7 +16,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       {/* blur numa camada própria: backdrop-filter no <header> viraria containing block do menu fixed */}
       <div aria-hidden="true" className="glass-bar absolute inset-0 -z-10 bg-navbar" />
       <div className="mx-auto flex max-w-[1280px] min-[1800px]:max-w-[1600px] items-center justify-between gap-5 px-[clamp(20px,4vw,48px)] py-3.5">
-        <Link href={localePath(locale, '/')} aria-label={t.homeAria} className="flex flex-none items-center gap-2.5">
+        <Link href={localePath(locale, '/')} aria-label={t.homeAria} className="flex min-h-11 flex-none items-center gap-2.5">
           <LogoMark size={36} />
           <span className="text-xl font-semibold tracking-[-0.01em]">Severius</span>
         </Link>
@@ -25,7 +25,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </nav>
         <div className="hidden flex-none items-center gap-3 lg:flex">
           <LanguageSwitcher locale={locale} labels={t.languages} groupLabel={t.languageAria} />
-          <LinkButton href={localePath(locale, '/contact')} className="h-11 px-5">{t.contact}</LinkButton>
+          <LinkButton href={localePath(locale, '/contact')} className="min-h-11 px-5">{t.contact}</LinkButton>
         </div>
         <MobileMenu locale={locale} items={items} t={t} />
       </div>

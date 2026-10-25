@@ -30,6 +30,15 @@ export const en: Dictionary = {
     ourWorks: 'Our Works',
     startProject: 'Start Project',
     trusted: 'Trusted by 250+ companies',
+    scrollCue: 'Scroll',
+  },
+  scrollStory: {
+    statement: 'You should not need to check every detail to know the project is moving forward. Our process is quiet, transparent and outcome-led: one focused team turning complexity into solid software.',
+    stats: [
+      { value: 250, suffix: '+', label: 'companies trust Severius' },
+      { value: 3, suffix: '', label: 'disciplines working as one' },
+      { value: 10, suffix: '', label: 'solutions in our portfolio' },
+    ],
   },
   home: {
     servicesTitle: 'Our Services',
@@ -187,6 +196,9 @@ export const en: Dictionary = {
       sentNamePrefix: ', ',
       sentEmailPrefix: ' to ',
       sendAnother: 'Send another',
+      requiredNote: 'Fields marked * are required.',
+      requiredLabel: 'required',
+      emailHint: 'For example: name@company.com',
     },
     faqTitle: 'Frequently Asked Questions',
     faqBody: 'Still have questions? Contact our team via {email}',
