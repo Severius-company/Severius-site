@@ -26,7 +26,10 @@ export function ServicesMegaMenu({ locale, label, copy }: { locale: Locale; labe
       onKeyDown={closeWithEscape}
     >
       <button type="button" aria-haspopup="true" aria-expanded={open} aria-controls="services-mega-menu" onClick={() => setOpen(true)}>
-        {label}<span aria-hidden="true">⌄</span>
+        {label}
+        <svg aria-hidden="true" viewBox="0 0 12 12">
+          <path d="m2.5 4.25 3.5 3.5 3.5-3.5" />
+        </svg>
       </button>
       <div id="services-mega-menu" hidden={!open} className="services-mega-panel">
         <div><p className="flow-eyebrow">Severius stack</p><strong>{copy.menuLabel}</strong><span>{copy.menuDescription}</span></div>
