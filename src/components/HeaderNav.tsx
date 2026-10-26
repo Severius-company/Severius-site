@@ -2,17 +2,19 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import type { ReactNode } from 'react'
 import type { NavKey } from '@/content/types'
 import { isActiveLink, localePath, stripLocale, type Locale } from '@/lib/i18n'
 import { cx } from '@/lib/cx'
 
 export type NavItem = { key: NavKey; href: string; label: string }
 
-export function HeaderNav({ locale, items }: { locale: Locale; items: NavItem[] }) {
+export function HeaderNav({ locale, items, servicesMenu }: { locale: Locale; items: NavItem[]; servicesMenu?: ReactNode }) {
   const base = stripLocale(usePathname() ?? '/')
   return (
     <ul className="m-0 flex min-w-0 flex-1 list-none items-center justify-center gap-1 p-0">
       {items.map(link => {
+        if (link.key === 'services' && servicesMenu) return <li key={link.key}>{servicesMenu}</li>
         const active = isActiveLink(base, link.href)
         return (
           <li key={link.key}>

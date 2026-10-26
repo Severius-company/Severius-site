@@ -26,8 +26,11 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </Link>
         <nav aria-label={t.mainAria} className="hidden min-w-0 flex-1 lg:flex">
           <div className="flex min-w-0 flex-1 items-center justify-center gap-1">
-            <ServicesMegaMenu locale={locale} copy={experience.services} />
-            <HeaderNav locale={locale} items={items} />
+            <HeaderNav
+              locale={locale}
+              items={items}
+              servicesMenu={<ServicesMegaMenu locale={locale} label={t.links.services} copy={experience.services} />}
+            />
           </div>
         </nav>
         <div className="hidden flex-none items-center gap-3 lg:flex">

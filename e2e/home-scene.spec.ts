@@ -9,12 +9,19 @@ test.describe('experiência Severius', () => {
     await expect(page.locator('main video, main img')).toHaveCount(0)
   })
 
-  test('submenu de capacidades abre e expõe as quatro frentes', async ({ page }) => {
+  test('submenu de serviços abre por hover e expõe as quatro capacidades', async ({ page }) => {
     await page.goto('/')
-    const trigger = page.getByRole('button', { name: 'Capabilities' })
-    await trigger.click()
+    const trigger = page.getByRole('button', { name: 'Services' })
+    await trigger.hover()
     await expect(trigger).toHaveAttribute('aria-expanded', 'true')
     await expect(page.locator('#services-mega-menu a')).toHaveCount(4)
+    await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Work', exact: true }).hover()
+    await expect(trigger).toHaveAttribute('aria-expanded', 'false')
+    await trigger.focus()
+    await expect(trigger).toHaveAttribute('aria-expanded', 'true')
+    await page.keyboard.press('Escape')
+    await expect(trigger).toHaveAttribute('aria-expanded', 'false')
+    await expect(trigger).toBeFocused()
   })
 
   test('pipeline demonstra mudança de etapa com mouse ou teclado', async ({ page }) => {

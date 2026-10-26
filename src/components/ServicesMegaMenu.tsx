@@ -1,16 +1,32 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, type FocusEvent, type KeyboardEvent } from 'react'
 import type { ExperienceCopy } from '@/content/homeExperience'
 import { localePath, type Locale } from '@/lib/i18n'
 
-export function ServicesMegaMenu({ locale, copy }: { locale: Locale; copy: ExperienceCopy['services'] }) {
+export function ServicesMegaMenu({ locale, label, copy }: { locale: Locale; label: string; copy: ExperienceCopy['services'] }) {
   const [open, setOpen] = useState(false)
+  const closeAfterFocusLeaves = (event: FocusEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false)
+  }
+  const closeWithEscape = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Escape') {
+      setOpen(false)
+      event.currentTarget.querySelector<HTMLButtonElement>('button')?.focus()
+    }
+  }
   return (
-    <div className="services-menu" onPointerLeave={() => setOpen(false)}>
-      <button type="button" aria-expanded={open} aria-controls="services-mega-menu" onClick={() => setOpen(value => !value)}>
-        {copy.menuLabel}<span aria-hidden="true">⌄</span>
+    <div
+      className="services-menu"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocusCapture={() => setOpen(true)}
+      onBlurCapture={closeAfterFocusLeaves}
+      onKeyDown={closeWithEscape}
+    >
+      <button type="button" aria-haspopup="true" aria-expanded={open} aria-controls="services-mega-menu" onClick={() => setOpen(true)}>
+        {label}<span aria-hidden="true">⌄</span>
       </button>
       <div id="services-mega-menu" hidden={!open} className="services-mega-panel">
         <div><p className="flow-eyebrow">Severius stack</p><strong>{copy.menuLabel}</strong><span>{copy.menuDescription}</span></div>

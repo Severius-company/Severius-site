@@ -79,7 +79,7 @@ export function MobileMenu({ locale, items, t, services }: { locale: Locale; ite
       <div ref={panelRef} id="mobile-menu" hidden={!open} className="fixed inset-x-0 top-[73px] bottom-0 z-40 overflow-y-auto border-t border-white/10 bg-bg/95 backdrop-blur-2xl">
         <nav aria-label={t.mobileAria} className="flex flex-col gap-2 px-5 py-6">
           <details className="mobile-services">
-            <summary>{services.menuLabel}<span aria-hidden="true">+</span></summary>
+            <summary>{t.links.services}<span aria-hidden="true">+</span></summary>
             <div>
               {services.items.map(item => <a key={item.id} href={`${localePath(locale, '/')}#capacidades`} onClick={close}><b>{item.number}</b>{item.title}</a>)}
             </div>
