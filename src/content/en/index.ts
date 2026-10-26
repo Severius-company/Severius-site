@@ -50,6 +50,8 @@ export const en: Dictionary = {
     whyTitle: 'Why Choose Severius?',
     whyBody: 'Experience excellence in digital craftsmanship with our team of skilled professionals dedicated to delivering exceptional results.',
     quotesTitle: 'What our Clients say About us',
+    aboutCta: 'Read our story',
+    testimonialAria: 'Client testimonial',
   },
   headers: {
     services: { title: 'Our Services', body: 'Transform your brand with our innovative digital solutions that captivate and engage your audience.' },

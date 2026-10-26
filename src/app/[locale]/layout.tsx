@@ -4,7 +4,9 @@ import { notFound } from 'next/navigation'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { SpotlightGlow } from '@/components/SpotlightGlow'
+import { SiteLoader } from '@/components/SiteLoader'
 import { getDictionary } from '@/content'
+import { getExperienceCopy } from '@/content/homeExperience'
 import { HTML_LANG, LOCALES, isLocale } from '@/lib/i18n'
 import { hasApprovedOrigin, siteOrigin } from '@/lib/site'
 import '../globals.css'
@@ -49,15 +51,18 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!isLocale(raw)) notFound()
   const locale = raw
   const dict = getDictionary(locale)
+  const experience = getExperienceCopy(locale)
   return (
     <html lang={HTML_LANG[locale]} className={`${barlow.variable} ${barlow.className}`}>
       <body className="min-h-screen bg-bg font-sans text-text">
+        <SiteLoader label={experience.loader} />
+        <noscript><style>{'.site-loader{display:none!important}'}</style></noscript>
         <SpotlightGlow />
         <a href="#main" data-skip-link className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-rb focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-on-accent">
           {dict.nav.skip}
         </a>
         <Header locale={locale} dict={dict} />
-        <main id="main" tabIndex={-1}>{children}</main>
+        <main id="main" tabIndex={-1} className="pt-[72px]">{children}</main>
         <Footer locale={locale} dict={dict} />
       </body>
     </html>

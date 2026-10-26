@@ -4,6 +4,7 @@ import { IconBox } from '@/components/IconBox'
 import { Tag } from '@/components/Tag'
 import { WorkShot } from '@/components/WorkShot'
 import type { WorkType } from '@/content/types'
+import { cx } from '@/lib/cx'
 import { fill, localePath, type Locale } from '@/lib/i18n'
 
 export type WorkCardData = { slug: string; client: string; url: string; type: WorkType; category: string }
@@ -13,11 +14,11 @@ export function shotLabel(template: string, work: Pick<WorkCardData, 'type' | 'c
   return fill(template, { type: work.type.toLowerCase(), client: work.client.toLowerCase() })
 }
 
-export function WorkCard({ work, locale, shotTemplate }: { work: WorkCardData; locale: Locale; shotTemplate: string }) {
+export function WorkCard({ work, locale, shotTemplate, className }: { work: WorkCardData; locale: Locale; shotTemplate: string; className?: string }) {
   return (
     <Link
       href={localePath(locale, `/work/${work.slug}`)}
-      className="glass-panel group flex h-full flex-col gap-[18px] rounded-r border p-6 text-left transition-[border-color,box-shadow,transform] duration-200 motion-safe:hover:-translate-y-1 hover:border-accent/30 hover:shadow-[0_26px_70px_rgba(0,0,0,.3)]"
+      className={cx('glass-panel group flex h-full flex-col gap-[18px] rounded-r border p-6 text-left transition-[border-color,box-shadow,transform] duration-200 motion-safe:hover:-translate-y-1 hover:border-accent/30 hover:shadow-[0_26px_70px_rgba(0,0,0,.3)]', className)}
     >
       <span className="text-[15px] text-muted">{work.category}</span>
       <WorkShot label={shotLabel(shotTemplate, work)} className="aspect-[16/10] rounded-rb" />

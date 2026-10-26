@@ -23,8 +23,6 @@ export const WORK_BASE: { slug: string; client: string; url: string; type: WorkT
 export const SERVICE_IDS: ServiceId[] = ['design', 'engineering', 'project-management']
 export const SERVICE_ICONS: Record<ServiceId, IconName> = { design: 'pen', engineering: 'code', 'project-management': 'brief' }
 
-export const WHY_ICONS: IconName[] = ['award', 'users', 'target', 'link']
-
 export const JOB_BASE: { id: number; group: JobGroup; icon: IconName }[] = (
   [
     ['Design', 'pen'], ['Design', 'users'], ['Design', 'award'],

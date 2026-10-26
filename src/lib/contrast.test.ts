@@ -21,6 +21,10 @@ const glassPanelWorst = over('#ffffff', 0.06, over('#9eff00', 0.06, over(surface
 const glassControlWorst = over('#ffffff', 0.1, over(surface2, 0.68, bg))
 const heroTop = over('#9eff00', 0.12, '#111111')
 const stripes = '#222222'
+const brightestRing = '#f6ffe3' // centro do núcleo / reflexo mais claro dos anéis
+const panelOverCore = over('#0a0a0a', 0.7, brightestRing)
+const panelCardOverCore = over('#0a0a0a', 0.6, panelOverCore)
+const heroScrimOverRing = over('#090909', 0.84, brightestRing)
 
 /** Pares texto/fundo declarados no design (AAA 1.4.6: 7:1 texto normal, 4.5:1 texto grande). */
 const PAIRS: [string, string, string, string, number][] = [
@@ -43,6 +47,15 @@ const PAIRS: [string, string, string, string, number][] = [
   ['err', token('err'), 'glass-panel (pior caso)', glassPanelWorst, 7],
   ['st-text', token('st-text'), 'stripes', stripes, 7],
   ['palavra apagada da ScrollStory (texto grande)', '#8a8a8a', '#0d0d0d', '#0d0d0d', 4.5],
+  // Cena do hero (home-motion.css), pior caso = ponto mais claro do núcleo/anéis (#f6ffe3) atrás do vidro/véu
+  ['text', token('text'), 'painel de vidro 70% sobre o núcleo', panelOverCore, 7],
+  ['muted', token('muted'), 'card do painel (60%) sobre painel sobre o núcleo', panelCardOverCore, 7],
+  ['accent (índice 01)', token('accent'), 'card do painel sobre o núcleo', panelCardOverCore, 7],
+  ['text', token('text'), 'véu do texto do hero (84%) sobre anel claro', heroScrimOverRing, 7],
+  ['hero-muted', token('hero-muted'), 'véu do texto do hero (84%) sobre anel claro', heroScrimOverRing, 7],
+  ['hero-muted', token('hero-muted'), 'cartão de depoimento (84%) sobre anel claro', heroScrimOverRing, 7],
+  ['on-accent (CTA final, início)', token('on-accent'), 'pílula branca', '#ffffff', 7],
+  ['on-accent (CTA final, fim)', token('on-accent'), 'pílula verde', token('accent'), 7],
 ]
 
 describe('contraste dos tokens (WCAG 1.4.6 AAA)', () => {

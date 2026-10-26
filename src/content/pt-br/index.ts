@@ -50,6 +50,8 @@ export const ptBr: Dictionary = {
     whyTitle: 'Por que escolher a Severius?',
     whyBody: 'Excelência em produtos digitais, com um time de profissionais experientes dedicado a entregar resultados excepcionais.',
     quotesTitle: 'O que nossos clientes dizem',
+    aboutCta: 'Conheça nossa história',
+    testimonialAria: 'Depoimento de cliente',
   },
   headers: {
     services: { title: 'Nossos serviços', body: 'Transforme sua marca com soluções digitais inovadoras que encantam e engajam o seu público.' },

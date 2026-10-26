@@ -5,7 +5,7 @@ const PREFIX: Record<Lang, string> = { en: '', pt: '/pt-br' }
 const HTML_LANG: Record<Lang, string> = { en: 'en-GB', pt: 'pt-BR' }
 
 const ROUTES: { path: string; h1: Record<Lang, string> }[] = [
-  { path: '/', h1: { en: 'A Digital Product Studio that will Work', pt: 'Um estúdio de produtos digitais que funciona de verdade' } },
+  { path: '/', h1: { en: 'Technology that untangles complex operations.', pt: 'Tecnologia que desenrola operações complexas.' } },
   { path: '/services', h1: { en: 'Our Services', pt: 'Nossos serviços' } },
   { path: '/work', h1: { en: 'Our Works', pt: 'Nossos projetos' } },
   { path: '/work/chic-boutique', h1: { en: 'Chic Boutique', pt: 'Chic Boutique' } },

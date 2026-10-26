@@ -122,7 +122,7 @@ export interface Dictionary {
   nav: NavDict
   hero: { line1: string; line2: string; for: string; and: string; audiences: [string, string, string, string]; ourWorks: string; startProject: string; trusted: string; scrollCue: string }
   scrollStory: { statement: string; stats: { value: number; suffix: string; label: string }[] }
-  home: { servicesTitle: string; servicesBody: string; learnMore: string; learnMoreAria: string; selectedWork: string; seeAll: string; whyTitle: string; whyBody: string; quotesTitle: string }
+  home: { servicesTitle: string; servicesBody: string; learnMore: string; learnMoreAria: string; selectedWork: string; seeAll: string; whyTitle: string; whyBody: string; quotesTitle: string; aboutCta: string; testimonialAria: string }
   headers: Record<HeaderKey, TitleBody>
   services: Record<ServiceId, ServiceText>
   servicesUi: { tabsAria: string; detailsAria: string }

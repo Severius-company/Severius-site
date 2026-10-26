@@ -8,11 +8,12 @@ import type { NavItem } from '@/components/HeaderNav'
 import { Icon } from '@/components/Icon'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import type { NavDict } from '@/content/types'
+import type { ExperienceCopy } from '@/content/homeExperience'
 import { isActiveLink, localePath, stripLocale, type Locale } from '@/lib/i18n'
 import { cx } from '@/lib/cx'
 
 /** Menu em tela cheia abaixo de 1024px (inclui o seletor de idioma). */
-export function MobileMenu({ locale, items, t }: { locale: Locale; items: NavItem[]; t: NavDict }) {
+export function MobileMenu({ locale, items, t, services }: { locale: Locale; items: NavItem[]; t: NavDict; services: ExperienceCopy['services'] }) {
   const [open, setOpen] = useState(false)
   const base = stripLocale(usePathname() ?? '/')
 
@@ -30,9 +31,9 @@ export function MobileMenu({ locale, items, t }: { locale: Locale; items: NavIte
     const outside = [document.getElementById('main'), document.querySelector('body > footer'), document.querySelector('[data-skip-link]')]
       .filter((el): el is HTMLElement => el instanceof HTMLElement)
     outside.forEach(el => el.setAttribute('inert', ''))
-    const focusables = () => [toggleRef.current, ...Array.from(panelRef.current?.querySelectorAll<HTMLElement>('a[href], button') ?? [])]
-      .filter((el): el is HTMLElement => !!el)
-    focusables()[1]?.focus()
+    const focusables = () => [toggleRef.current, ...Array.from(panelRef.current?.querySelectorAll<HTMLElement>('a[href], button, summary') ?? [])]
+      .filter((el): el is HTMLElement => !!el && el.offsetParent !== null)
+    panelRef.current?.querySelector<HTMLElement>('nav > a[href]')?.focus()
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -77,7 +78,14 @@ export function MobileMenu({ locale, items, t }: { locale: Locale; items: NavIte
       </button>
       <div ref={panelRef} id="mobile-menu" hidden={!open} className="fixed inset-x-0 top-[73px] bottom-0 z-40 overflow-y-auto border-t border-white/10 bg-bg/95 backdrop-blur-2xl">
         <nav aria-label={t.mobileAria} className="flex flex-col gap-2 px-5 py-6">
+          <details className="mobile-services">
+            <summary>{services.menuLabel}<span aria-hidden="true">+</span></summary>
+            <div>
+              {services.items.map(item => <a key={item.id} href={`${localePath(locale, '/')}#capacidades`} onClick={close}><b>{item.number}</b>{item.title}</a>)}
+            </div>
+          </details>
           {items.map(link => {
+            if (link.key === 'services') return null
             const active = isActiveLink(base, link.href)
             return (
               <Link

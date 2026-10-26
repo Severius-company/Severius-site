@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./home-motion.css";
+@import "./home-experience.css";
 
 @theme {
   --font-sans: var(--font-barlow), system-ui, sans-serif;
@@ -71,6 +73,7 @@
     color-scheme: dark;
     -webkit-text-size-adjust: 100%;
     overflow-x: clip;
+    scroll-behavior: smooth;
   }
   body {
     margin: 0;
@@ -103,6 +106,41 @@
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
+}
+
+/* O header perde altura e ruído visual depois que a página começa a rolar. */
+.site-header,
+.site-header-inner,
+.site-header-brand,
+.site-header-wordmark,
+.severius-logo-mark {
+  transition: min-height .28s ease, padding .28s ease, gap .28s ease, font-size .28s ease, transform .28s ease, opacity .28s ease;
+}
+.site-header[data-compact] .site-header-inner { padding-top: 6px; padding-bottom: 6px; }
+.site-header[data-compact] .site-header-brand { min-height: 40px; gap: 8px; }
+.site-header[data-compact] .site-header-brand .severius-logo-mark { transform: scale(.84); }
+.site-header[data-compact] .site-header-wordmark { font-size: 17px; }
+.site-header[data-compact] #mobile-menu { top: 53px; }
+
+/* O gesto de pincel se desenha na entrada e respira como um sistema ativo. */
+.severius-logo-mark svg {
+  transform-origin: center;
+  animation: severius-logo-breathe 4.8s ease-in-out 1.15s infinite;
+}
+.severius-logo-mark path {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: severius-logo-draw .9s cubic-bezier(.65, 0, .2, 1) forwards;
+}
+.severius-logo-mark path:nth-child(2) { animation-delay: 70ms; }
+.severius-logo-mark path:nth-child(3) { animation-delay: 140ms; }
+.severius-logo-mark path:nth-child(4) { animation-delay: 210ms; }
+.severius-logo-mark path:nth-child(5) { animation-delay: 280ms; }
+.severius-logo-mark path:nth-child(6) { animation-delay: 350ms; }
+@keyframes severius-logo-draw { to { stroke-dashoffset: 0; } }
+@keyframes severius-logo-breathe {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(158, 255, 0, 0)); transform: scale(1); }
+  50% { filter: drop-shadow(0 0 7px rgba(158, 255, 0, .38)); transform: scale(1.035); }
 }
 
 /* Material translúcido inspirado em liquid glass, ajustado ao contraste da marca. */
@@ -236,177 +274,6 @@
   .glass-accent { background-color: var(--color-accent); }
 }
 
-/* O movimento é dirigido pelo scroll, como no vídeo de referência. */
-.hero-scroll-scene {
-  --hero-progress: 0;
-  min-height: calc(100svh + 280px);
-  position: relative;
-}
-.hero-scroll-stage {
-  position: sticky;
-  top: 65px;
-  min-height: calc(100svh - 65px);
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  isolation: isolate;
-}
-.hero-scroll-copy {
-  position: relative;
-  z-index: 2;
-  padding-top: clamp(46px, 7vh, 88px);
-  padding-bottom: clamp(56px, 8vh, 96px);
-  transform: translate3d(0, calc(var(--hero-progress) * -82px), 0);
-  opacity: calc(1 - var(--hero-progress) * .72);
-  will-change: transform, opacity;
-}
-.hero-logo-spacer {
-  width: 96px;
-  height: 96px;
-}
-.hero-sculpture {
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  top: 45%;
-  width: min(58vw, 720px);
-  aspect-ratio: 1;
-  transform: translate3d(-50%, calc(-50% + var(--hero-progress) * -110px), 0) scale(calc(.72 + var(--hero-progress) * .42)) rotate(calc(var(--hero-progress) * 18deg));
-  opacity: calc(.28 + var(--hero-progress) * .42);
-  filter: drop-shadow(0 0 70px color-mix(in srgb, var(--color-accent) 25%, transparent));
-  will-change: transform, opacity;
-}
-.hero-core {
-  position: absolute;
-  inset: 50% auto auto 50%;
-  transform: translate(-50%, -50%);
-}
-.hero-halo {
-  position: absolute;
-  inset: 50% auto auto 50%;
-  border: clamp(10px, 1.4vw, 18px) solid color-mix(in srgb, var(--color-accent) 64%, white);
-  border-radius: 50%;
-  box-shadow: inset 0 0 30px color-mix(in srgb, var(--color-accent) 25%, transparent), 0 0 50px color-mix(in srgb, var(--color-accent) 18%, transparent);
-}
-.hero-halo-one {
-  width: 88%;
-  height: 88%;
-  transform: translate(-50%, -50%) rotateX(calc(58deg - var(--hero-progress) * 22deg)) rotateZ(calc(var(--hero-progress) * 42deg));
-}
-.hero-halo-two {
-  width: 68%;
-  height: 68%;
-  transform: translate(-50%, -50%) rotateX(calc(64deg - var(--hero-progress) * 30deg)) rotateY(38deg) rotateZ(calc(var(--hero-progress) * -54deg));
-}
-.hero-halo-three {
-  width: 48%;
-  height: 48%;
-  transform: translate(-50%, -50%) rotateX(calc(48deg + var(--hero-progress) * 24deg)) rotateY(-44deg) rotateZ(calc(var(--hero-progress) * 64deg));
-}
-.hero-scroll-cue {
-  position: absolute;
-  z-index: 3;
-  bottom: 22px;
-  left: 50%;
-  display: flex;
-  transform: translateX(-50%);
-  align-items: center;
-  gap: 9px;
-  color: var(--color-hero-muted);
-  font-size: 12px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  opacity: calc(1 - var(--hero-progress) * 2);
-}
-.hero-scroll-cue i {
-  width: 1px;
-  height: 24px;
-  background: linear-gradient(var(--color-accent), transparent);
-  /* 2.2.2: para sozinho (3 ciclos, < 5 s) */
-  animation: scroll-cue 1.6s ease-in-out 3;
-}
-
-.scroll-story {
-  /* 1 = tudo aceso: é o estado sem JS/SSR; o cliente ajusta conforme a rolagem */
-  --story-progress: 1;
-  min-height: 190svh;
-  position: relative;
-  background: #0d0d0d;
-}
-.scroll-story-sticky {
-  position: sticky;
-  top: 65px;
-  min-height: calc(100svh - 65px);
-  gap: clamp(48px, 7vh, 82px);
-  padding-top: 52px;
-  padding-bottom: 52px;
-  overflow: hidden;
-}
-.scroll-story-copy {
-  max-width: 29ch;
-  text-wrap: balance;
-}
-.scroll-story-copy span {
-  /* de #8a8a8a (5.6:1 sobre #0d0d0d, texto grande: AAA) até branco */
-  color: color-mix(in srgb, #ffffff calc(clamp(0, (var(--story-progress) * (var(--word-count) + 3) - var(--word-index)) * .42, 1) * 100%), #8a8a8a);
-  transition: color 80ms linear;
-}
-.scroll-story-stats {
-  opacity: clamp(0, calc((var(--story-progress) - .48) * 4), 1);
-  transform: translate3d(0, clamp(0px, calc((1 - var(--story-progress)) * 60px), 60px), 0);
-  will-change: transform, opacity;
-}
-.metric-frame {
-  position: relative;
-  min-height: 220px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 42%),
-    radial-gradient(circle at 20% 0%, rgba(158, 255, 0, 0.08), transparent 50%),
-    rgba(20, 20, 20, 0.68);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(14px) saturate(135%);
-  backdrop-filter: blur(14px) saturate(135%);
-}
-.metric-frame::before,
-.metric-frame::after {
-  content: '';
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border-color: var(--color-line2);
-  pointer-events: none;
-}
-.metric-frame::before {
-  top: 12px;
-  left: 12px;
-  border-top: 1px solid;
-  border-left: 1px solid;
-}
-.metric-frame::after {
-  right: 12px;
-  bottom: 12px;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-}
-@keyframes scroll-cue {
-  0%, 100% { transform: scaleY(.45); transform-origin: top; opacity: .4; }
-  50% { transform: scaleY(1); opacity: 1; }
-}
-
-@media (max-width: 767px) {
-  .hero-scroll-scene { min-height: auto; }
-  .hero-scroll-stage { position: relative; top: auto; min-height: auto; }
-  .hero-scroll-copy { padding-top: 64px; padding-bottom: 80px; transform: none; opacity: 1; }
-  .hero-sculpture { top: 39%; width: 520px; opacity: .25; transform: translate(-50%, -50%) scale(.8); }
-  .hero-logo-spacer { height: 72px; }
-  .hero-scroll-cue { display: none; }
-  .scroll-story { min-height: 145svh; }
-  .scroll-story-sticky { min-height: calc(100svh - 65px); gap: 34px; padding-top: 36px; padding-bottom: 36px; }
-  .scroll-story-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .metric-frame { min-height: 150px; padding: 18px 14px; }
-  .metric-frame strong { margin-top: 24px; font-size: clamp(30px, 10vw, 44px); }
-}
-
 /* Reveal: SSR visível; o cliente só marca como "hidden" o que está abaixo da dobra. */
 [data-reveal='hidden'] {
   opacity: 0;
@@ -419,6 +286,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .severius-logo-mark svg,
+  .severius-logo-mark path {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
   :where(.glass-panel, .glass-control, .glass-accent, .glass-nav-active, .glass-icon)::before {
     display: none;
   }
@@ -429,37 +301,6 @@
   }
   .animate-hero-in {
     animation: none;
-  }
-  .hero-scroll-scene,
-  .scroll-story {
-    min-height: auto;
-  }
-  .hero-scroll-stage,
-  .scroll-story-sticky {
-    position: relative;
-    top: auto;
-    min-height: auto;
-  }
-  .hero-scroll-copy,
-  .scroll-story-stats {
-    transform: none !important;
-    opacity: 1 !important;
-  }
-  /* escultura do hero fica parada no estado inicial (centrada), sem parallax */
-  .hero-sculpture {
-    transform: translate3d(-50%, -50%, 0) scale(.72) !important;
-    opacity: .28 !important;
-  }
-  .hero-halo-one,
-  .hero-halo-two,
-  .hero-halo-three {
-    transition: none !important;
-  }
-  .scroll-story-copy span {
-    color: var(--color-text) !important;
-  }
-  .hero-scroll-cue {
-    display: none;
   }
   html {
     /* spotlight do ponteiro desligado (2.3.3) mesmo se o JS já estiver rodando */
@@ -495,9 +336,6 @@
   :where(.glass-panel, .glass-control, .glass-accent, .glass-nav-active, .glass-icon)::before {
     display: none;
   }
-  .scroll-story-copy span {
-    color: #ffffff !important;
-  }
 }
 
 /* Modo de cores forçadas (Windows High Contrast) */
@@ -528,10 +366,6 @@
   }
   .flag {
     forced-color-adjust: none;
-  }
-  .hero-sculpture,
-  .hero-scroll-cue {
-    display: none;
   }
 }
 

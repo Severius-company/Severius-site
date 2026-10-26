@@ -33,6 +33,30 @@ Site da Severius (estúdio de produtos digitais), tema escuro "Studio Dark".
 link some de header, footer, menu mobile e sitemap. O código e o conteúdo continuam no projeto; para
 reativar, troque a flag para `true`.
 
+## Movimento da home
+
+A home é uma cena guiada pela rolagem, feita só com CSS 3D + variáveis CSS (sem three.js nem libs de animação):
+
+1. **Hero preso** (`position: sticky`): anéis "metálicos" (`conic-gradient` + `mask`, 3 camadas em `translateZ`)
+   em volta de um núcleo verde tombam em 3D e sobem; o texto sobe e esmaece.
+2. **Painel de vidro** (About + "Why Choose Severius?") fica espiando no rodapé e depois sobe por cima do
+   hero; o brilho do núcleo vaza borrado pelo `backdrop-filter`. Por fim, núcleo e anéis somem.
+3. **ScrollStory:** a frase acende palavra a palavra, os números contam em cards com colchetes nos cantos e a
+   pílula "Start Project/Iniciar projeto" passa de branco para verde.
+
+**Como funciona o progresso:** `src/components/ScrollProgress.tsx` calcula o progresso 0→1 de cada cena (um
+`requestAnimationFrame` por evento de `scroll` passivo, só enquanto a cena está na viewport via
+`IntersectionObserver`) e grava variáveis CSS no elemento: `--hero-progress`, fases com easing (`--hero-tilt`,
+`--hero-rise`, `--hero-fade`, `--story-progress`, `--story-cta`). As fases ficam em `HeroHome.tsx`/`ScrollStory.tsx`.
+O CSS (`src/app/home-motion.css`) usa essas variáveis só em `transform`/`opacity` e liga `will-change` apenas
+com a cena ativa (`[data-scene-active]`).
+
+**Como desativar:** o sistema operacional/navegador com "reduzir movimento" (`prefers-reduced-motion: reduce`)
+recebe a versão estática completa: anéis parados, painel em fluxo normal, sem sticky. Sem JS, o padrão das
+variáveis também é estático e todo o conteúdo fica visível. Para desligar de vez no código, remova os
+`<ScrollProgress>` de `HeroHome.tsx` e `ScrollStory.tsx`. Em telas < 768 px ou com altura < 640 px o hero não é
+preso e usa menos camadas.
+
 ## Acessibilidade
 
 Meta: WCAG 2.2 AA com reforços AAA onde é tecnicamente aplicável (não é uma declaração de conformidade AAA total).
