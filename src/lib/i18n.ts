@@ -1,6 +1,7 @@
 export const LOCALES = ['en', 'pt-br'] as const
 export type Locale = (typeof LOCALES)[number]
 export const DEFAULT_LOCALE: Locale = 'en'
+export const LOCALE_COOKIE = 'severius-locale'
 
 /** Valor de <html lang> / hreflang por locale. */
 export const HTML_LANG: Record<Locale, 'en-GB' | 'pt-BR'> = { en: 'en-GB', 'pt-br': 'pt-BR' }

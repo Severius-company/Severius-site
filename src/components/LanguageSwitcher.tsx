@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 import { FlagBrazil, FlagEngland } from '@/components/Flags'
-import { HTML_LANG, LOCALES, localePath, stripLocale, type Locale } from '@/lib/i18n'
+import { HTML_LANG, LOCALES, LOCALE_COOKIE, localePath, stripLocale, type Locale } from '@/lib/i18n'
 import { cx } from '@/lib/cx'
 
 type Props = { locale: Locale; labels: Record<Locale, string>; groupLabel: string; className?: string; onNavigate?: () => void }
@@ -27,7 +27,10 @@ function Links({ locale, labels, groupLabel, className, onNavigate, search }: Pr
               lang={HTML_LANG[l]}
               aria-label={labels[l]}
               aria-current={active ? 'true' : undefined}
-              onClick={onNavigate}
+              onClick={() => {
+                document.cookie = `${LOCALE_COOKIE}=${l}; Path=/; Max-Age=31536000; SameSite=Lax`
+                onNavigate?.()
+              }}
               className={cx(
                 'flex size-11 items-center justify-center rounded-rb border transition-colors duration-150',
                 active ? 'glass-control border-accent ring-2 ring-accent' : 'border-line2 bg-white/[0.025] backdrop-blur-md hover:border-hero-muted hover:bg-white/[0.08]',
@@ -48,7 +51,7 @@ function WithSearch(props: Props) {
   return <Links {...props} search={tab ? `?tab=${encodeURIComponent(tab)}` : ''} />
 }
 
-/** Leva à mesma página no outro idioma, preservando ?tab=. Sem cookie, sem redirecionamento automático. */
+/** Leva à mesma página no outro idioma, preservando ?tab= e a escolha manual. */
 export function LanguageSwitcher(props: Props) {
   return (
     <Suspense fallback={<Links {...props} search="" />}>
