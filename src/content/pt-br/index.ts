@@ -220,6 +220,13 @@ export const ptBr: Dictionary = {
     body: 'Queremos muito ouvir você e conversar sobre como podemos tirar as suas ideias digitais do papel.',
     button: 'Iniciar projeto',
   },
+  cookies: {
+    title: 'Cookies e privacidade',
+    body: 'Usamos cookies essenciais para lembrar seu idioma e manter o site funcionando. No momento, não usamos cookies de análise ou publicidade.',
+    accept: 'Aceitar todos os cookies',
+    essential: 'Somente essenciais',
+    aria: 'Preferências de cookies',
+  },
   footer: { rights: '© 2026 Severius. Todos os direitos reservados.' },
   notFound: { title: 'Página não encontrada', body: 'A página que você procura não existe.', back: 'Voltar para o início' },
 }

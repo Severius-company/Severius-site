@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import { notFound } from 'next/navigation'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { CookieConsent } from '@/components/CookieConsent'
 import { SpotlightGlow } from '@/components/SpotlightGlow'
 import { SiteLoader } from '@/components/SiteLoader'
 import { getDictionary } from '@/content'
@@ -64,6 +65,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <Header locale={locale} dict={dict} />
         <main id="main" tabIndex={-1} className="pt-[72px]">{children}</main>
         <Footer locale={locale} dict={dict} />
+        <CookieConsent copy={dict.cookies} />
       </body>
     </html>
   )

@@ -18,9 +18,10 @@ Site da Severius (estúdio de produtos digitais), tema escuro "Studio Dark".
 | `/work`, `/work/[slug]` | `/pt-br/work`, `/pt-br/work/[slug]` |
 | `/process`, `/about`, `/contact` | `/pt-br/process`, `/pt-br/about`, `/pt-br/contact` |
 
-- As páginas ficam em `src/app/[locale]/` (`en` | `pt-br`). O `src/proxy.ts` reescreve internamente as URLs
-  sem prefixo para `/en/...` e redireciona `/en/...` (308) para a URL sem prefixo. Não há cookie nem
-  redirecionamento por `Accept-Language`.
+- As páginas ficam em `src/app/[locale]/` (`en` | `pt-br`). O `src/proxy.ts` envia visitantes do Brasil
+  para `/pt-br/...` pelo header geográfico da Vercel e mantém os demais países no inglês sem prefixo.
+  A escolha manual de idioma prevalece e fica salva em cookie funcional.
+- O banner bilíngue registra `all` ou `essential`; atualmente o site não usa cookies de análise ou publicidade.
 - Os textos ficam em dicionários tipados: `src/content/en`, `src/content/pt-br` e `src/content/types.ts`.
   Dados que não se traduzem (clientes, URLs, contato, ícones) ficam em `src/content/shared.ts`. Use
   `getDictionary(locale)` para obter os textos.

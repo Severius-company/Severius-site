@@ -147,6 +147,7 @@ export interface Dictionary {
   }
   faqs: { q: string; a: string }[]
   cta: { title: string; body: string; button: string }
+  cookies: { title: string; body: string; accept: string; essential: string; aria: string }
   footer: { rights: string }
   notFound: { title: string; body: string; back: string }
 }

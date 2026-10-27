@@ -220,6 +220,13 @@ export const en: Dictionary = {
     body: 'We would love to hear from you and discuss how we can help bring your digital ideas to life.',
     button: 'Start Project',
   },
+  cookies: {
+    title: 'Cookies and privacy',
+    body: 'We use essential cookies to remember your language and keep the site working. We do not currently use analytics or advertising cookies.',
+    accept: 'Accept all cookies',
+    essential: 'Essential only',
+    aria: 'Cookie preferences',
+  },
   footer: { rights: '© 2026 Severius. All rights reserved.' },
   notFound: { title: 'Page not found', body: 'The page you are looking for does not exist.', back: 'Back to Home' },
 }
