@@ -30,8 +30,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <a href={`tel:${CONTACT.phone.replace(/\s+/g, '')}`} className="inline-flex min-h-11 items-center transition-colors duration-150 hover:text-text">{CONTACT.phone}</a>
         </div>
       </Reveal>
-      <div className="mx-auto max-w-[1280px] min-[1800px]:max-w-[1600px] border-t border-line px-[clamp(20px,4vw,48px)] pt-[18px] pb-7 text-sm text-muted">
-        {dict.footer.rights}
+      <div className="mx-auto flex max-w-[1280px] min-[1800px]:max-w-[1600px] flex-wrap items-center justify-between gap-3 border-t border-line px-[clamp(20px,4vw,48px)] pt-[18px] pb-7 text-sm text-muted">
+        <span>{dict.footer.rights}</span>
+        <Link href={localePath(locale, '/legal')} className="inline-flex min-h-11 items-center underline decoration-line2 underline-offset-4 transition-colors hover:text-text">
+          {dict.footer.legal}
+        </Link>
       </div>
     </footer>
   )

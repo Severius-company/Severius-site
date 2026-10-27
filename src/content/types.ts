@@ -5,7 +5,7 @@ export type WorkFilter = 'All' | WorkType
 export type JobGroup = 'Design' | 'Development' | 'Management' | 'QA'
 export type JobFilter = 'All' | JobGroup
 export type ServiceId = 'design' | 'engineering' | 'project-management'
-export type HeaderKey = 'services' | 'work' | 'process' | 'about' | 'careers' | 'contact'
+export type HeaderKey = 'services' | 'work' | 'process' | 'about' | 'careers' | 'contact' | 'legal'
 export type NavKey = 'home' | 'services' | 'work' | 'process' | 'about' | 'careers'
 export type NeedId = 'web-design' | 'mobile-app-design' | 'engineering' | 'collaboration' | 'others'
 export type BudgetId = 'under-5k' | '5k-15k' | '15k-50k' | '50k-plus'
@@ -36,6 +36,10 @@ export interface ServiceText {
 export interface TitleBody {
   title: string
   body: string
+}
+
+export interface LegalSection extends TitleBody {
+  items?: string[]
 }
 
 /** Textos de UI usados por componentes client (só strings: serializável). */
@@ -147,7 +151,8 @@ export interface Dictionary {
   }
   faqs: { q: string; a: string }[]
   cta: { title: string; body: string; button: string }
-  cookies: { title: string; body: string; accept: string; essential: string; aria: string }
-  footer: { rights: string }
+  cookies: { title: string; body: string; accept: string; essential: string; aria: string; policy: string }
+  legal: { updated: string; sections: LegalSection[] }
+  footer: { rights: string; legal: string }
   notFound: { title: string; body: string; back: string }
 }

@@ -6,7 +6,7 @@ import { careersEnabled, siteOrigin } from '@/lib/site'
 /** Rotas públicas sem prefixo de idioma (Careers só com a flag ligada). */
 export function sitemapPaths(): string[] {
   return [
-    '/', '/services', '/work', '/process', '/about', ...(careersEnabled ? ['/careers'] : []), '/contact',
+    '/', '/services', '/work', '/process', '/about', ...(careersEnabled ? ['/careers'] : []), '/contact', '/legal',
     ...WORK_BASE.map(w => `/work/${w.slug}`),
   ]
 }

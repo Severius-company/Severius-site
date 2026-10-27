@@ -1,12 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import type { Dictionary } from '@/content/types'
-import { COOKIE_CONSENT_COOKIE } from '@/lib/i18n'
+import { COOKIE_CONSENT_COOKIE, localePath, type Locale } from '@/lib/i18n'
 
 type Consent = 'all' | 'essential'
 
-export function CookieConsent({ copy }: { copy: Dictionary['cookies'] }) {
+export function CookieConsent({ copy, locale }: { copy: Dictionary['cookies']; locale: Locale }) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -28,6 +29,9 @@ export function CookieConsent({ copy }: { copy: Dictionary['cookies'] }) {
         <div className="max-w-xl">
           <h2 className="text-lg font-semibold text-white">{copy.title}</h2>
           <p className="mt-2 text-sm leading-6 text-[#b8b8b8]">{copy.body}</p>
+          <Link href={localePath(locale, '/legal')} className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent">
+            {copy.policy}
+          </Link>
         </div>
         <div className="flex flex-col gap-2 sm:min-w-48">
           <button type="button" onClick={() => choose('all')} className="min-h-11 rounded-rb bg-accent px-5 font-semibold text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">

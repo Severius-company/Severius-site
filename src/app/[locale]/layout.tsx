@@ -65,7 +65,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <Header locale={locale} dict={dict} />
         <main id="main" tabIndex={-1} className="pt-[72px]">{children}</main>
         <Footer locale={locale} dict={dict} />
-        <CookieConsent copy={dict.cookies} />
+        <CookieConsent copy={dict.cookies} locale={locale} />
       </body>
     </html>
   )

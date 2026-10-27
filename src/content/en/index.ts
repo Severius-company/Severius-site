@@ -60,6 +60,7 @@ export const en: Dictionary = {
     about: { title: 'About Us', body: 'Welcome to Severius, where collaboration, expertise, and client-centricity intersect to shape the future of digital innovation.' },
     careers: { title: 'Join Our Team at Severius', body: 'Unlock your potential and join our team of innovators and problem solvers.' },
     contact: { title: 'Contact Us', body: 'Get in touch with us today and let us help you with any questions or enquiries you may have.' },
+    legal: { title: 'Legal, Privacy and Cookies', body: 'Understand how the Severius website handles data, cookies and your privacy rights.' },
   },
   services: {
     design: { tab: 'Design', title: 'Design', include: 'Our design services include:', body: 'At Severius, our design team is passionate about creating stunning, user-centric designs that captivate your audience and elevate your brand.',
@@ -226,7 +227,21 @@ export const en: Dictionary = {
     accept: 'Accept all cookies',
     essential: 'Essential only',
     aria: 'Cookie preferences',
+    policy: 'Read the legal and privacy policy',
   },
-  footer: { rights: '© 2026 Severius. All rights reserved.' },
+  legal: {
+    updated: 'Last updated: 27 October 2026',
+    sections: [
+      { title: 'Who is responsible', body: 'Severius operates this institutional website. For privacy requests or questions, contact hello@severius.com.' },
+      { title: 'Data handled by this website', body: 'We process only what is necessary to deliver and protect the website.', items: ['Technical request data, such as IP-derived country, browser and device information, may be processed by our hosting provider.', 'Your language and cookie choices are stored in functional cookies.', 'The current contact form validates information only in your browser and does not send or store its contents on a Severius server. This policy will be updated before server-side submission is activated.'] },
+      { title: 'Purposes and legal grounds', body: 'Technical and functional data is used to serve the correct language, maintain security and remember your preferences. Essential processing is based on operating the service and legitimate security needs; optional processing will depend on consent.' },
+      { title: 'Cookies', body: 'We do not currently use analytics or advertising cookies.', items: ['severius-locale — remembers your language for up to one year.', 'severius-cookie-consent — records your cookie choice for up to one year.'] },
+      { title: 'Sharing and international processing', body: 'We do not sell personal data. Technical request data may be processed by infrastructure and hosting providers where required to operate and secure the website, subject to their contractual and legal safeguards.' },
+      { title: 'Retention and security', body: 'Preference cookies remain for up to one year unless you remove them earlier. Technical logs may be retained by the hosting provider for security and operational periods. We apply reasonable technical and organisational safeguards, but no internet service is risk-free.' },
+      { title: 'Your rights', body: 'Depending on applicable law, including the LGPD or GDPR, you may request confirmation, access, correction, deletion, portability or information about processing, and may withdraw consent. Contact hello@severius.com to exercise a right.' },
+      { title: 'Children and policy changes', body: 'This website is intended for business audiences and is not directed to children. Material changes to this policy will be published here with a revised update date.' },
+    ],
+  },
+  footer: { rights: '© 2026 Severius. All rights reserved.', legal: 'Legal & Privacy' },
   notFound: { title: 'Page not found', body: 'The page you are looking for does not exist.', back: 'Back to Home' },
 }

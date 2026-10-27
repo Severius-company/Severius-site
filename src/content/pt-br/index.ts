@@ -60,6 +60,7 @@ export const ptBr: Dictionary = {
     about: { title: 'Sobre nós', body: 'Boas-vindas à Severius, onde colaboração, experiência e foco no cliente se encontram para moldar o futuro da inovação digital.' },
     careers: { title: 'Faça parte do time Severius', body: 'Desenvolva todo o seu potencial em um time de pessoas inovadoras que adoram resolver problemas.' },
     contact: { title: 'Fale conosco', body: 'Entre em contato e deixe a gente ajudar com qualquer dúvida ou pedido que você tiver.' },
+    legal: { title: 'Jurídico, Privacidade e Cookies', body: 'Entenda como o site da Severius trata dados, cookies e os seus direitos de privacidade.' },
   },
   services: {
     design: { tab: 'Design', title: 'Design', include: 'Nossos serviços de design incluem:', body: 'Na Severius, nosso time de design é apaixonado por criar experiências bonitas e centradas no usuário, que encantam o seu público e valorizam a sua marca.',
@@ -226,7 +227,21 @@ export const ptBr: Dictionary = {
     accept: 'Aceitar todos os cookies',
     essential: 'Somente essenciais',
     aria: 'Preferências de cookies',
+    policy: 'Leia a política jurídica e de privacidade',
   },
-  footer: { rights: '© 2026 Severius. Todos os direitos reservados.' },
+  legal: {
+    updated: 'Última atualização: 27 de outubro de 2026',
+    sections: [
+      { title: 'Quem é responsável', body: 'A Severius opera este site institucional. Para solicitações ou dúvidas sobre privacidade, escreva para hello@severius.com.' },
+      { title: 'Dados tratados por este site', body: 'Tratamos somente o necessário para entregar e proteger o site.', items: ['Dados técnicos da requisição, como país derivado do IP, navegador e dispositivo, podem ser processados pelo provedor de hospedagem.', 'As suas escolhas de idioma e cookies ficam salvas em cookies funcionais.', 'O formulário de contato atual apenas valida informações no seu navegador e não envia nem armazena o conteúdo em um servidor da Severius. Esta política será atualizada antes da ativação do envio ao servidor.'] },
+      { title: 'Finalidades e bases legais', body: 'Dados técnicos e funcionais são usados para apresentar o idioma correto, manter a segurança e lembrar preferências. O tratamento essencial se apoia no funcionamento do serviço e na segurança; qualquer tratamento opcional dependerá de consentimento.' },
+      { title: 'Cookies', body: 'No momento, não usamos cookies de análise ou publicidade.', items: ['severius-locale — lembra o idioma escolhido por até um ano.', 'severius-cookie-consent — registra a sua escolha de cookies por até um ano.'] },
+      { title: 'Compartilhamento e tratamento internacional', body: 'Não vendemos dados pessoais. Dados técnicos da requisição podem ser processados por provedores de infraestrutura e hospedagem quando necessário para operar e proteger o site, sujeitos às garantias contratuais e legais aplicáveis.' },
+      { title: 'Retenção e segurança', body: 'Cookies de preferência permanecem por até um ano, salvo remoção antecipada. Logs técnicos podem ser mantidos pelo provedor de hospedagem durante períodos operacionais e de segurança. Aplicamos medidas técnicas e organizacionais razoáveis, mas nenhum serviço na internet é livre de riscos.' },
+      { title: 'Seus direitos', body: 'Conforme a legislação aplicável, incluindo a LGPD ou o GDPR, você pode solicitar confirmação, acesso, correção, exclusão, portabilidade ou informações sobre o tratamento, além de retirar o consentimento. Escreva para hello@severius.com para exercer um direito.' },
+      { title: 'Crianças e alterações desta política', body: 'Este site é destinado ao público empresarial e não é direcionado a crianças. Alterações relevantes serão publicadas nesta página com uma nova data de atualização.' },
+    ],
+  },
+  footer: { rights: '© 2026 Severius. Todos os direitos reservados.', legal: 'Jurídico e Privacidade' },
   notFound: { title: 'Página não encontrada', body: 'A página que você procura não existe.', back: 'Voltar para o início' },
 }
