@@ -230,10 +230,10 @@ export const ptBr: Dictionary = {
     policy: 'Leia a política jurídica e de privacidade',
   },
   legal: {
-    updated: 'Última atualização: 27 de outubro de 2026',
+    updated: 'Última atualização: 30 de outubro de 2026',
     sections: [
       { title: 'Quem é responsável', body: 'A Severius opera este site institucional. Para solicitações ou dúvidas sobre privacidade, escreva para hello@severius.com.' },
-      { title: 'Dados tratados por este site', body: 'Tratamos somente o necessário para entregar e proteger o site.', items: ['Dados técnicos da requisição, como país derivado do IP, navegador e dispositivo, podem ser processados pelo provedor de hospedagem.', 'As suas escolhas de idioma e cookies ficam salvas em cookies funcionais.', 'O formulário de contato atual apenas valida informações no seu navegador e não envia nem armazena o conteúdo em um servidor da Severius. Esta política será atualizada antes da ativação do envio ao servidor.'] },
+      { title: 'Dados tratados por este site', body: 'Tratamos somente o necessário para entregar e proteger o site.', items: ['Dados técnicos da requisição, como país derivado do IP, navegador e dispositivo, podem ser processados pelo provedor de hospedagem.', 'As suas escolhas de idioma e cookies ficam salvas em cookies funcionais.', 'O formulário de contato atual valida informações somente no navegador e mantém o rascunho no armazenamento da sessão até ela terminar. O conteúdo não é enviado nem armazenado em um servidor da Severius. Esta política será atualizada antes da ativação do envio ao servidor.'] },
       { title: 'Finalidades e bases legais', body: 'Dados técnicos e funcionais são usados para apresentar o idioma correto, manter a segurança e lembrar preferências. O tratamento essencial se apoia no funcionamento do serviço e na segurança; qualquer tratamento opcional dependerá de consentimento.' },
       { title: 'Cookies', body: 'No momento, não usamos cookies de análise ou publicidade.', items: ['severius-locale — lembra o idioma escolhido por até um ano.', 'severius-cookie-consent — registra a sua escolha de cookies por até um ano.'] },
       { title: 'Compartilhamento e tratamento internacional', body: 'Não vendemos dados pessoais. Dados técnicos da requisição podem ser processados por provedores de infraestrutura e hospedagem quando necessário para operar e proteger o site, sujeitos às garantias contratuais e legais aplicáveis.' },

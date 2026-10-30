@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { getDictionary } from '@/content'
-import { INITIAL_CONTACT, sentText, validateContact } from './contact-form'
+import { INITIAL_CONTACT, parseContactDraft, sentText, validateContact } from './contact-form'
 
 describe('validateContact', () => {
   it('exige o nome primeiro', () => {
@@ -13,6 +13,12 @@ describe('validateContact', () => {
   it('estado inicial igual ao protótipo', () => {
     expect(INITIAL_CONTACT.needs).toEqual(['web-design'])
     expect(INITIAL_CONTACT.budget).toBe('15k-50k')
+  })
+  it('restaura apenas um rascunho válido da sessão', () => {
+    expect(parseContactDraft(JSON.stringify({ name: 'Ana', email: 'ana@empresa.com', needs: ['engineering', 'invalid'], budget: '50k-plus', message: 'CRM' }))).toEqual({
+      name: 'Ana', email: 'ana@empresa.com', needs: ['engineering'], budget: '50k-plus', message: 'CRM',
+    })
+    expect(parseContactDraft('{invalid')).toEqual(INITIAL_CONTACT)
   })
   it('mensagens por idioma', () => {
     const en = getDictionary('en').contact.form

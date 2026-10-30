@@ -1,11 +1,11 @@
 'use client'
 
-import { useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Button } from '@/components/Button'
 import { Chip } from '@/components/Chip'
 import { Icon } from '@/components/Icon'
 import type { BudgetId, ContactFormDict, NeedId } from '@/content/types'
-import { INITIAL_CONTACT, sentText, validateContact, type ContactErrorField, type ContactValues } from '@/lib/contact-form'
+import { CONTACT_DRAFT_KEY, INITIAL_CONTACT, parseContactDraft, sentText, validateContact, type ContactErrorField, type ContactValues } from '@/lib/contact-form'
 import { toggleInList } from '@/lib/filters'
 
 const NEED_IDS: NeedId[] = ['web-design', 'mobile-app-design', 'engineering', 'collaboration', 'others']
@@ -22,7 +22,18 @@ export function ContactForm({ t }: { t: ContactFormDict }) {
   const emailRef = useRef<HTMLInputElement>(null)
   const doneRef = useRef<HTMLHeadingElement>(null)
 
-  const set = (patch: Partial<ContactValues>) => setValues(v => ({ ...v, ...patch }))
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      try { setValues(parseContactDraft(sessionStorage.getItem(CONTACT_DRAFT_KEY))) } catch { /* armazenamento pode estar bloqueado */ }
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [])
+
+  const set = (patch: Partial<ContactValues>) => setValues(current => {
+    const next = { ...current, ...patch }
+    try { sessionStorage.setItem(CONTACT_DRAFT_KEY, JSON.stringify(next)) } catch { /* armazenamento pode estar bloqueado */ }
+    return next
+  })
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -37,7 +48,6 @@ export function ContactForm({ t }: { t: ContactFormDict }) {
   }
 
   const reset = () => {
-    setValues(v => ({ ...v, name: '', email: '', message: '' }))
     setSent(false)
   }
 

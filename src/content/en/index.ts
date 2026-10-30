@@ -230,10 +230,10 @@ export const en: Dictionary = {
     policy: 'Read the legal and privacy policy',
   },
   legal: {
-    updated: 'Last updated: 27 October 2026',
+    updated: 'Last updated: 30 October 2026',
     sections: [
       { title: 'Who is responsible', body: 'Severius operates this institutional website. For privacy requests or questions, contact hello@severius.com.' },
-      { title: 'Data handled by this website', body: 'We process only what is necessary to deliver and protect the website.', items: ['Technical request data, such as IP-derived country, browser and device information, may be processed by our hosting provider.', 'Your language and cookie choices are stored in functional cookies.', 'The current contact form validates information only in your browser and does not send or store its contents on a Severius server. This policy will be updated before server-side submission is activated.'] },
+      { title: 'Data handled by this website', body: 'We process only what is necessary to deliver and protect the website.', items: ['Technical request data, such as IP-derived country, browser and device information, may be processed by our hosting provider.', 'Your language and cookie choices are stored in functional cookies.', 'The current contact form validates information only in your browser and keeps its draft in session storage until the browser session ends. It does not send or store the contents on a Severius server. This policy will be updated before server-side submission is activated.'] },
       { title: 'Purposes and legal grounds', body: 'Technical and functional data is used to serve the correct language, maintain security and remember your preferences. Essential processing is based on operating the service and legitimate security needs; optional processing will depend on consent.' },
       { title: 'Cookies', body: 'We do not currently use analytics or advertising cookies.', items: ['severius-locale — remembers your language for up to one year.', 'severius-cookie-consent — records your cookie choice for up to one year.'] },
       { title: 'Sharing and international processing', body: 'We do not sell personal data. Technical request data may be processed by infrastructure and hosting providers where required to operate and secure the website, subject to their contractual and legal safeguards.' },
